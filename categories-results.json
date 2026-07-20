@@ -1,0 +1,138 @@
+{
+  "url": "https://staging.bisviews.com/categories",
+  "timestamp": "2026-07-20T12:08:41.385Z",
+  "status": 200,
+  "title": "BisViews",
+  "actions": [],
+  "errors": [],
+  "headings": [
+    {
+      "tag": "h1",
+      "text": "What company do you want to review ?"
+    },
+    {
+      "tag": "h2",
+      "text": "Discover businesses in different categories"
+    },
+    {
+      "tag": "h3",
+      "text": "Home & Gardens"
+    },
+    {
+      "tag": "h3",
+      "text": "Events & Entertainment"
+    },
+    {
+      "tag": "h3",
+      "text": "Restaurants & Bars, Food & Beverages"
+    },
+    {
+      "tag": "h3",
+      "text": "Electronics & Technology"
+    },
+    {
+      "tag": "h3",
+      "text": "Shopping & Fashion"
+    },
+    {
+      "tag": "h3",
+      "text": "Hobbies & Crafts"
+    },
+    {
+      "tag": "h3",
+      "text": "Health & Medical"
+    },
+    {
+      "tag": "h3",
+      "text": "Sports"
+    },
+    {
+      "tag": "h3",
+      "text": "Animals & Pets"
+    },
+    {
+      "tag": "h3",
+      "text": "Beauty & Wellbeing"
+    },
+    {
+      "tag": "h3",
+      "text": "Media & Publishing"
+    },
+    {
+      "tag": "h3",
+      "text": "Education & Training"
+    },
+    {
+      "tag": "h3",
+      "text": "Travel & Vacation"
+    },
+    {
+      "tag": "h3",
+      "text": "Nonprofits & Social Causes"
+    },
+    {
+      "tag": "h3",
+      "text": "Construction, Manufacturing & Agriculture"
+    },
+    {
+      "tag": "h3",
+      "text": "Baby, Children & Maternity"
+    },
+    {
+      "tag": "h3",
+      "text": "Recruitment & HR Services"
+    },
+    {
+      "tag": "h3",
+      "text": "Dating & Relationship Services"
+    },
+    {
+      "tag": "h3",
+      "text": "Legal"
+    },
+    {
+      "tag": "h3",
+      "text": "Vehicles & Transportation"
+    },
+    {
+      "tag": "h3",
+      "text": "Business Services"
+    },
+    {
+      "tag": "h3",
+      "text": "Money & Business"
+    },
+    {
+      "tag": "h3",
+      "text": "Utilities"
+    },
+    {
+      "tag": "h3",
+      "text": "Real Estate"
+    },
+    {
+      "tag": "h3",
+      "text": "Special Investments"
+    },
+    {
+      "tag": "h5",
+      "text": "Address"
+    },
+    {
+      "tag": "h5",
+      "text": "Business"
+    },
+    {
+      "tag": "h5",
+      "text": "Quick Link"
+    },
+    {
+      "tag": "h5",
+      "text": "Follow us on"
+    }
+  ],
+  "forms": [],
+  "consoleErrors": [
+    "Failed to load resource: the server responded with a status of 401 ()"
+  ]
+}

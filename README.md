@@ -1,0 +1,79 @@
+# 🛠️ QA Toolkit
+
+A universal, project-independent QA automation toolkit for use with Claude Code and any AI coding assistant.
+
+Built by **Azeez** — works for any project (BisViews, PrimBooks, or anything else).
+
+## ✨ Features
+
+| Tool | Description |
+|------|-------------|
+| `browser-test.js` | Navigate any website, take screenshots, check links/images, fill forms, extract content |
+| `web-search.js` | Search the web (DuckDuckGo + Bing fallback) — no API key needed |
+| `report-generator.js` | Generate professional HTML + PDF reports from JSON data (4 themes) |
+| `accessibility-check.js` | WCAG accessibility audits using axe-core |
+| `visual-diff.js` | Compare screenshots pixel-by-pixel for visual regression |
+
+## 🚀 Setup
+
+```bash
+git clone https://github.com/YOUR_USERNAME/qa-toolkit.git
+cd qa-toolkit
+npm install
+npx playwright install chromium
+```
+
+## 📖 Usage
+
+### Browser Test
+```bash
+# Screenshot + link check
+node browser-test.js --url "https://example.com" --screenshot --check-links
+
+# Mobile view + extract forms
+node browser-test.js --url "https://example.com" --mobile --extract-forms
+
+# Fill and submit a form
+node browser-test.js --url "https://example.com" --fill '{"#email":"test@test.com"}' --click "#submit"
+```
+
+### Web Search
+```bash
+node web-search.js --query "business name status" --results 10
+node web-search.js --query "PrimBooks ERP" --output results.json
+```
+
+### Report Generator
+```bash
+# From JSON data file
+node report-generator.js --title "QA Audit Report" --input data.json --output report
+
+# Themes: dark (default), light, blue, green
+node report-generator.js --title "Entity Audit" --author "Azeez" --input findings.json --output audit --theme blue
+```
+
+### Accessibility Check
+```bash
+node accessibility-check.js --url "https://example.com"
+node accessibility-check.js --url "https://example.com" --report a11y-audit
+```
+
+### Visual Diff
+```bash
+node visual-diff.js --baseline before.png --current after.png --output diff.png
+```
+
+## 🔧 Claude Code Integration
+
+### Custom Commands
+Copy `.claude/commands/` to your home directory to get:
+- `/qa-test <url>` — Full QA audit
+- `/generate-report <file>` — Create HTML+PDF report
+- `/search-web <query>` — Search the web
+
+### MCP Server
+Copy `.claude/mcp.json` to `~/.claude/` to give Claude Code native URL fetching.
+
+## 📄 License
+
+MIT

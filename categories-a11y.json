@@ -1,0 +1,749 @@
+{
+  "url": "https://staging.bisviews.com/categories",
+  "title": "BisViews",
+  "timestamp": "2026-07-20T12:07:37.813Z",
+  "tags": [
+    "wcag2a",
+    "wcag2aa",
+    "best-practice"
+  ],
+  "summary": {
+    "passed": 35,
+    "violations": 5,
+    "incomplete": 1
+  },
+  "violations": [
+    {
+      "id": "button-name",
+      "impact": "critical",
+      "description": "Ensure buttons have discernible text",
+      "help": "Buttons must have discernible text",
+      "helpUrl": "https://dequeuniversity.com/rules/axe/4.12/button-name?application=playwright",
+      "affectedElements": 25,
+      "nodes": [
+        {
+          "target": ".p-1:nth-child(1)",
+          "html": "<button class=\"p-1 flex items-center\"><span class=\"\n                  transition-all duration-300 rounded-full\n                  w-[66px] h-[13px] bg-primary\n                \"></span></button>",
+          "failureSummary": "Fix any of the following:\n  Element does not have inner text that is visible to screen readers\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute\n  Element does not have an implicit (wrapped) <label>\n  Element does not have an explicit <label>\n  Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+        },
+        {
+          "target": ".p-1:nth-child(2)",
+          "html": "<button class=\"p-1 flex items-center\"><span class=\"\n                  transition-all duration-300 rounded-full\n                  w-[13px] h-[13px] bg-secondary cursor-pointer\n                \"></span>",
+          "failureSummary": "Fix any of the following:\n  Element does not have inner text that is visible to screen readers\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute\n  Element does not have an implicit (wrapped) <label>\n  Element does not have an explicit <label>\n  Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+        },
+        {
+          "target": ".p-1:nth-child(3)",
+          "html": "<button class=\"p-1 flex items-center\"><span class=\"\n                  transition-all duration-300 rounded-full\n                  w-[13px] h-[13px] bg-secondary cursor-pointer\n                \"></span>",
+          "failureSummary": "Fix any of the following:\n  Element does not have inner text that is visible to screen readers\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute\n  Element does not have an implicit (wrapped) <label>\n  Element does not have an explicit <label>\n  Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+        },
+        {
+          "target": ".p-1:nth-child(4)",
+          "html": "<button class=\"p-1 flex items-center\"><span class=\"\n                  transition-all duration-300 rounded-full\n                  w-[13px] h-[13px] bg-secondary cursor-pointer\n                \"></span>",
+          "failureSummary": "Fix any of the following:\n  Element does not have inner text that is visible to screen readers\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute\n  Element does not have an implicit (wrapped) <label>\n  Element does not have an explicit <label>\n  Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+        },
+        {
+          "target": ".p-1:nth-child(5)",
+          "html": "<button class=\"p-1 flex items-center\"><span class=\"\n                  transition-all duration-300 rounded-full\n                  w-[13px] h-[13px] bg-secondary cursor-pointer\n                \"></span>",
+          "failureSummary": "Fix any of the following:\n  Element does not have inner text that is visible to screen readers\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute\n  Element does not have an implicit (wrapped) <label>\n  Element does not have an explicit <label>\n  Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+        },
+        {
+          "target": ".p-1:nth-child(6)",
+          "html": "<button class=\"p-1 flex items-center\"><span class=\"\n                  transition-all duration-300 rounded-full\n                  w-[13px] h-[13px] bg-secondary cursor-pointer\n                \"></span>",
+          "failureSummary": "Fix any of the following:\n  Element does not have inner text that is visible to screen readers\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute\n  Element does not have an implicit (wrapped) <label>\n  Element does not have an explicit <label>\n  Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+        },
+        {
+          "target": ".p-1:nth-child(7)",
+          "html": "<button class=\"p-1 flex items-center\"><span class=\"\n                  transition-all duration-300 rounded-full\n                  w-[13px] h-[13px] bg-secondary cursor-pointer\n                \"></span>",
+          "failureSummary": "Fix any of the following:\n  Element does not have inner text that is visible to screen readers\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute\n  Element does not have an implicit (wrapped) <label>\n  Element does not have an explicit <label>\n  Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+        },
+        {
+          "target": ".p-1:nth-child(8)",
+          "html": "<button class=\"p-1 flex items-center\"><span class=\"\n                  transition-all duration-300 rounded-full\n                  w-[13px] h-[13px] bg-secondary cursor-pointer\n                \"></span>",
+          "failureSummary": "Fix any of the following:\n  Element does not have inner text that is visible to screen readers\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute\n  Element does not have an implicit (wrapped) <label>\n  Element does not have an explicit <label>\n  Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+        },
+        {
+          "target": ".p-1:nth-child(9)",
+          "html": "<button class=\"p-1 flex items-center\"><span class=\"\n                  transition-all duration-300 rounded-full\n                  w-[13px] h-[13px] bg-secondary cursor-pointer\n                \"></span>",
+          "failureSummary": "Fix any of the following:\n  Element does not have inner text that is visible to screen readers\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute\n  Element does not have an implicit (wrapped) <label>\n  Element does not have an explicit <label>\n  Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+        },
+        {
+          "target": ".p-1:nth-child(10)",
+          "html": "<button class=\"p-1 flex items-center\"><span class=\"\n                  transition-all duration-300 rounded-full\n                  w-[13px] h-[13px] bg-secondary cursor-pointer\n                \"></span>",
+          "failureSummary": "Fix any of the following:\n  Element does not have inner text that is visible to screen readers\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute\n  Element does not have an implicit (wrapped) <label>\n  Element does not have an explicit <label>\n  Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+        },
+        {
+          "target": ".p-1:nth-child(11)",
+          "html": "<button class=\"p-1 flex items-center\"><span class=\"\n                  transition-all duration-300 rounded-full\n                  w-[13px] h-[13px] bg-secondary cursor-pointer\n                \"></span>",
+          "failureSummary": "Fix any of the following:\n  Element does not have inner text that is visible to screen readers\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute\n  Element does not have an implicit (wrapped) <label>\n  Element does not have an explicit <label>\n  Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+        },
+        {
+          "target": ".p-1:nth-child(12)",
+          "html": "<button class=\"p-1 flex items-center\"><span class=\"\n                  transition-all duration-300 rounded-full\n                  w-[13px] h-[13px] bg-secondary cursor-pointer\n                \"></span>",
+          "failureSummary": "Fix any of the following:\n  Element does not have inner text that is visible to screen readers\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute\n  Element does not have an implicit (wrapped) <label>\n  Element does not have an explicit <label>\n  Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+        },
+        {
+          "target": ".p-1:nth-child(13)",
+          "html": "<button class=\"p-1 flex items-center\"><span class=\"\n                  transition-all duration-300 rounded-full\n                  w-[13px] h-[13px] bg-secondary cursor-pointer\n                \"></span>",
+          "failureSummary": "Fix any of the following:\n  Element does not have inner text that is visible to screen readers\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute\n  Element does not have an implicit (wrapped) <label>\n  Element does not have an explicit <label>\n  Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+        },
+        {
+          "target": ".p-1:nth-child(14)",
+          "html": "<button class=\"p-1 flex items-center\"><span class=\"\n                  transition-all duration-300 rounded-full\n                  w-[13px] h-[13px] bg-secondary cursor-pointer\n                \"></span>",
+          "failureSummary": "Fix any of the following:\n  Element does not have inner text that is visible to screen readers\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute\n  Element does not have an implicit (wrapped) <label>\n  Element does not have an explicit <label>\n  Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+        },
+        {
+          "target": ".p-1:nth-child(15)",
+          "html": "<button class=\"p-1 flex items-center\"><span class=\"\n                  transition-all duration-300 rounded-full\n                  w-[13px] h-[13px] bg-secondary cursor-pointer\n                \"></span>",
+          "failureSummary": "Fix any of the following:\n  Element does not have inner text that is visible to screen readers\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute\n  Element does not have an implicit (wrapped) <label>\n  Element does not have an explicit <label>\n  Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+        },
+        {
+          "target": ".p-1:nth-child(16)",
+          "html": "<button class=\"p-1 flex items-center\"><span class=\"\n                  transition-all duration-300 rounded-full\n                  w-[13px] h-[13px] bg-secondary cursor-pointer\n                \"></span>",
+          "failureSummary": "Fix any of the following:\n  Element does not have inner text that is visible to screen readers\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute\n  Element does not have an implicit (wrapped) <label>\n  Element does not have an explicit <label>\n  Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+        },
+        {
+          "target": ".p-1:nth-child(17)",
+          "html": "<button class=\"p-1 flex items-center\"><span class=\"\n                  transition-all duration-300 rounded-full\n                  w-[13px] h-[13px] bg-secondary cursor-pointer\n                \"></span>",
+          "failureSummary": "Fix any of the following:\n  Element does not have inner text that is visible to screen readers\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute\n  Element does not have an implicit (wrapped) <label>\n  Element does not have an explicit <label>\n  Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+        },
+        {
+          "target": ".p-1:nth-child(18)",
+          "html": "<button class=\"p-1 flex items-center\"><span class=\"\n                  transition-all duration-300 rounded-full\n                  w-[13px] h-[13px] bg-secondary cursor-pointer\n                \"></span>",
+          "failureSummary": "Fix any of the following:\n  Element does not have inner text that is visible to screen readers\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute\n  Element does not have an implicit (wrapped) <label>\n  Element does not have an explicit <label>\n  Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+        },
+        {
+          "target": ".p-1:nth-child(19)",
+          "html": "<button class=\"p-1 flex items-center\"><span class=\"\n                  transition-all duration-300 rounded-full\n                  w-[13px] h-[13px] bg-secondary cursor-pointer\n                \"></span>",
+          "failureSummary": "Fix any of the following:\n  Element does not have inner text that is visible to screen readers\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute\n  Element does not have an implicit (wrapped) <label>\n  Element does not have an explicit <label>\n  Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+        },
+        {
+          "target": ".p-1:nth-child(20)",
+          "html": "<button class=\"p-1 flex items-center\"><span class=\"\n                  transition-all duration-300 rounded-full\n                  w-[13px] h-[13px] bg-secondary cursor-pointer\n                \"></span>",
+          "failureSummary": "Fix any of the following:\n  Element does not have inner text that is visible to screen readers\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute\n  Element does not have an implicit (wrapped) <label>\n  Element does not have an explicit <label>\n  Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+        },
+        {
+          "target": ".p-1:nth-child(21)",
+          "html": "<button class=\"p-1 flex items-center\"><span class=\"\n                  transition-all duration-300 rounded-full\n                  w-[13px] h-[13px] bg-secondary cursor-pointer\n                \"></span>",
+          "failureSummary": "Fix any of the following:\n  Element does not have inner text that is visible to screen readers\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute\n  Element does not have an implicit (wrapped) <label>\n  Element does not have an explicit <label>\n  Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+        },
+        {
+          "target": ".p-1:nth-child(22)",
+          "html": "<button class=\"p-1 flex items-center\"><span class=\"\n                  transition-all duration-300 rounded-full\n                  w-[13px] h-[13px] bg-secondary cursor-pointer\n                \"></span>",
+          "failureSummary": "Fix any of the following:\n  Element does not have inner text that is visible to screen readers\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute\n  Element does not have an implicit (wrapped) <label>\n  Element does not have an explicit <label>\n  Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+        },
+        {
+          "target": ".p-1:nth-child(23)",
+          "html": "<button class=\"p-1 flex items-center\"><span class=\"\n                  transition-all duration-300 rounded-full\n                  w-[13px] h-[13px] bg-secondary cursor-pointer\n                \"></span>",
+          "failureSummary": "Fix any of the following:\n  Element does not have inner text that is visible to screen readers\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute\n  Element does not have an implicit (wrapped) <label>\n  Element does not have an explicit <label>\n  Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+        },
+        {
+          "target": ".p-1:nth-child(24)",
+          "html": "<button class=\"p-1 flex items-center\"><span class=\"\n                  transition-all duration-300 rounded-full\n                  w-[13px] h-[13px] bg-secondary cursor-pointer\n                \"></span>",
+          "failureSummary": "Fix any of the following:\n  Element does not have inner text that is visible to screen readers\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute\n  Element does not have an implicit (wrapped) <label>\n  Element does not have an explicit <label>\n  Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+        },
+        {
+          "target": ".p-1:nth-child(25)",
+          "html": "<button class=\"p-1 flex items-center\"><span class=\"\n                  transition-all duration-300 rounded-full\n                  w-[13px] h-[13px] bg-secondary cursor-pointer\n                \"></span>",
+          "failureSummary": "Fix any of the following:\n  Element does not have inner text that is visible to screen readers\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute\n  Element does not have an implicit (wrapped) <label>\n  Element does not have an explicit <label>\n  Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+        }
+      ]
+    },
+    {
+      "id": "heading-order",
+      "impact": "moderate",
+      "description": "Ensure the order of headings is semantically correct",
+      "help": "Heading levels should only increase by one",
+      "helpUrl": "https://dequeuniversity.com/rules/axe/4.12/heading-order?application=playwright",
+      "affectedElements": 1,
+      "nodes": [
+        {
+          "target": ".md\\:max-w-\\[175px\\].w-full:nth-child(1) > h5",
+          "html": "<h5 class=\"text-white md:text-[20px]\">Address</h5>",
+          "failureSummary": "Fix any of the following:\n  Heading order invalid"
+        }
+      ]
+    },
+    {
+      "id": "landmark-one-main",
+      "impact": "moderate",
+      "description": "Ensure the document has a main landmark",
+      "help": "Document should have one main landmark",
+      "helpUrl": "https://dequeuniversity.com/rules/axe/4.12/landmark-one-main?application=playwright",
+      "affectedElements": 1,
+      "nodes": [
+        {
+          "target": "html",
+          "html": "<html lang=\"en\">",
+          "failureSummary": "Fix all of the following:\n  Document does not have a main landmark"
+        }
+      ]
+    },
+    {
+      "id": "list",
+      "impact": "serious",
+      "description": "Ensure that lists are structured correctly",
+      "help": "<ul> and <ol> must only directly contain <li>, <script> or <template> elements",
+      "helpUrl": "https://dequeuniversity.com/rules/axe/4.12/list?application=playwright",
+      "affectedElements": 25,
+      "nodes": [
+        {
+          "target": ".md\\:py-\\[135px\\].py-\\[54px\\].bg-\\[\\#F9F9F9\\] > .max-w-\\[1230px\\].sm\\:px-6.px-4 > div > .md\\:mt-\\[64px\\].mt-\\[32px\\].columns-1 > .mb-\\[24px\\].break-inside-avoid.shadow-\\[0_4px_30px_rgba\\(0\\,0\\,0\\,0\\.04\\)\\]:nth-child(1) > .md\\:block.max-h-0.p-0 > ul",
+          "html": "<ul class=\"flex w-full flex-col text-[14px] md:text-base\">",
+          "failureSummary": "Fix all of the following:\n  List element has direct children that are not allowed: a"
+        },
+        {
+          "target": ".md\\:py-\\[135px\\].py-\\[54px\\].bg-\\[\\#F9F9F9\\] > .max-w-\\[1230px\\].sm\\:px-6.px-4 > div > .md\\:mt-\\[64px\\].mt-\\[32px\\].columns-1 > .mb-\\[24px\\].break-inside-avoid.shadow-\\[0_4px_30px_rgba\\(0\\,0\\,0\\,0\\.04\\)\\]:nth-child(2) > .md\\:block.max-h-0.p-0 > ul",
+          "html": "<ul class=\"flex w-full flex-col text-[14px] md:text-base\">",
+          "failureSummary": "Fix all of the following:\n  List element has direct children that are not allowed: a"
+        },
+        {
+          "target": ".md\\:py-\\[135px\\].py-\\[54px\\].bg-\\[\\#F9F9F9\\] > .max-w-\\[1230px\\].sm\\:px-6.px-4 > div > .md\\:mt-\\[64px\\].mt-\\[32px\\].columns-1 > .mb-\\[24px\\].break-inside-avoid.shadow-\\[0_4px_30px_rgba\\(0\\,0\\,0\\,0\\.04\\)\\]:nth-child(3) > .md\\:block.max-h-0.p-0 > ul",
+          "html": "<ul class=\"flex w-full flex-col text-[14px] md:text-base\">",
+          "failureSummary": "Fix all of the following:\n  List element has direct children that are not allowed: a"
+        },
+        {
+          "target": ".md\\:py-\\[135px\\].py-\\[54px\\].bg-\\[\\#F9F9F9\\] > .max-w-\\[1230px\\].sm\\:px-6.px-4 > div > .md\\:mt-\\[64px\\].mt-\\[32px\\].columns-1 > .mb-\\[24px\\].break-inside-avoid.shadow-\\[0_4px_30px_rgba\\(0\\,0\\,0\\,0\\.04\\)\\]:nth-child(4) > .md\\:block.max-h-0.p-0 > ul",
+          "html": "<ul class=\"flex w-full flex-col text-[14px] md:text-base\">",
+          "failureSummary": "Fix all of the following:\n  List element has direct children that are not allowed: a"
+        },
+        {
+          "target": ".mb-\\[24px\\].break-inside-avoid.shadow-\\[0_4px_30px_rgba\\(0\\,0\\,0\\,0\\.04\\)\\]:nth-child(5) > .md\\:block.max-h-0.p-0 > ul",
+          "html": "<ul class=\"flex w-full flex-col text-[14px] md:text-base\">",
+          "failureSummary": "Fix all of the following:\n  List element has direct children that are not allowed: a"
+        },
+        {
+          "target": ".mb-\\[24px\\].break-inside-avoid.shadow-\\[0_4px_30px_rgba\\(0\\,0\\,0\\,0\\.04\\)\\]:nth-child(6) > .md\\:block.max-h-0.p-0 > ul",
+          "html": "<ul class=\"flex w-full flex-col text-[14px] md:text-base\">",
+          "failureSummary": "Fix all of the following:\n  List element has direct children that are not allowed: a"
+        },
+        {
+          "target": ".mb-\\[24px\\].break-inside-avoid.shadow-\\[0_4px_30px_rgba\\(0\\,0\\,0\\,0\\.04\\)\\]:nth-child(7) > .md\\:block.max-h-0.p-0 > ul",
+          "html": "<ul class=\"flex w-full flex-col text-[14px] md:text-base\">",
+          "failureSummary": "Fix all of the following:\n  List element has direct children that are not allowed: a"
+        },
+        {
+          "target": ".mb-\\[24px\\].break-inside-avoid.shadow-\\[0_4px_30px_rgba\\(0\\,0\\,0\\,0\\.04\\)\\]:nth-child(8) > .md\\:block.max-h-0.p-0 > ul",
+          "html": "<ul class=\"flex w-full flex-col text-[14px] md:text-base\">",
+          "failureSummary": "Fix all of the following:\n  List element has direct children that are not allowed: a"
+        },
+        {
+          "target": ".mb-\\[24px\\].break-inside-avoid.shadow-\\[0_4px_30px_rgba\\(0\\,0\\,0\\,0\\.04\\)\\]:nth-child(9) > .md\\:block.max-h-0.p-0 > ul",
+          "html": "<ul class=\"flex w-full flex-col text-[14px] md:text-base\">",
+          "failureSummary": "Fix all of the following:\n  List element has direct children that are not allowed: a"
+        },
+        {
+          "target": ".mb-\\[24px\\].break-inside-avoid.shadow-\\[0_4px_30px_rgba\\(0\\,0\\,0\\,0\\.04\\)\\]:nth-child(10) > .md\\:block.max-h-0.p-0 > ul",
+          "html": "<ul class=\"flex w-full flex-col text-[14px] md:text-base\">",
+          "failureSummary": "Fix all of the following:\n  List element has direct children that are not allowed: a"
+        },
+        {
+          "target": ".mb-\\[24px\\].break-inside-avoid.shadow-\\[0_4px_30px_rgba\\(0\\,0\\,0\\,0\\.04\\)\\]:nth-child(11) > .md\\:block.max-h-0.p-0 > ul",
+          "html": "<ul class=\"flex w-full flex-col text-[14px] md:text-base\">",
+          "failureSummary": "Fix all of the following:\n  List element has direct children that are not allowed: a"
+        },
+        {
+          "target": ".mb-\\[24px\\].break-inside-avoid.shadow-\\[0_4px_30px_rgba\\(0\\,0\\,0\\,0\\.04\\)\\]:nth-child(12) > .md\\:block.max-h-0.p-0 > ul",
+          "html": "<ul class=\"flex w-full flex-col text-[14px] md:text-base\">",
+          "failureSummary": "Fix all of the following:\n  List element has direct children that are not allowed: a"
+        },
+        {
+          "target": ".mb-\\[24px\\].break-inside-avoid.shadow-\\[0_4px_30px_rgba\\(0\\,0\\,0\\,0\\.04\\)\\]:nth-child(13) > .md\\:block.max-h-0.p-0 > ul",
+          "html": "<ul class=\"flex w-full flex-col text-[14px] md:text-base\">",
+          "failureSummary": "Fix all of the following:\n  List element has direct children that are not allowed: a"
+        },
+        {
+          "target": ".mb-\\[24px\\].break-inside-avoid.shadow-\\[0_4px_30px_rgba\\(0\\,0\\,0\\,0\\.04\\)\\]:nth-child(14) > .md\\:block.max-h-0.p-0 > ul",
+          "html": "<ul class=\"flex w-full flex-col text-[14px] md:text-base\">",
+          "failureSummary": "Fix all of the following:\n  List element has direct children that are not allowed: a"
+        },
+        {
+          "target": ".mb-\\[24px\\].break-inside-avoid.shadow-\\[0_4px_30px_rgba\\(0\\,0\\,0\\,0\\.04\\)\\]:nth-child(15) > .md\\:block.max-h-0.p-0 > ul",
+          "html": "<ul class=\"flex w-full flex-col text-[14px] md:text-base\">",
+          "failureSummary": "Fix all of the following:\n  List element has direct children that are not allowed: a"
+        },
+        {
+          "target": ".mb-\\[24px\\].break-inside-avoid.shadow-\\[0_4px_30px_rgba\\(0\\,0\\,0\\,0\\.04\\)\\]:nth-child(16) > .md\\:block.max-h-0.p-0 > ul",
+          "html": "<ul class=\"flex w-full flex-col text-[14px] md:text-base\">",
+          "failureSummary": "Fix all of the following:\n  List element has direct children that are not allowed: a"
+        },
+        {
+          "target": ".mb-\\[24px\\].break-inside-avoid.shadow-\\[0_4px_30px_rgba\\(0\\,0\\,0\\,0\\.04\\)\\]:nth-child(17) > .md\\:block.max-h-0.p-0 > ul",
+          "html": "<ul class=\"flex w-full flex-col text-[14px] md:text-base\">",
+          "failureSummary": "Fix all of the following:\n  List element has direct children that are not allowed: a"
+        },
+        {
+          "target": ".mb-\\[24px\\].break-inside-avoid.shadow-\\[0_4px_30px_rgba\\(0\\,0\\,0\\,0\\.04\\)\\]:nth-child(18) > .md\\:block.max-h-0.p-0 > ul",
+          "html": "<ul class=\"flex w-full flex-col text-[14px] md:text-base\">",
+          "failureSummary": "Fix all of the following:\n  List element has direct children that are not allowed: a"
+        },
+        {
+          "target": ".mb-\\[24px\\].break-inside-avoid.shadow-\\[0_4px_30px_rgba\\(0\\,0\\,0\\,0\\.04\\)\\]:nth-child(19) > .md\\:block.max-h-0.p-0 > ul",
+          "html": "<ul class=\"flex w-full flex-col text-[14px] md:text-base\">",
+          "failureSummary": "Fix all of the following:\n  List element has direct children that are not allowed: a"
+        },
+        {
+          "target": ".mb-\\[24px\\].break-inside-avoid.shadow-\\[0_4px_30px_rgba\\(0\\,0\\,0\\,0\\.04\\)\\]:nth-child(20) > .md\\:block.max-h-0.p-0 > ul",
+          "html": "<ul class=\"flex w-full flex-col text-[14px] md:text-base\">",
+          "failureSummary": "Fix all of the following:\n  List element has direct children that are not allowed: a"
+        },
+        {
+          "target": ".mb-\\[24px\\].break-inside-avoid.shadow-\\[0_4px_30px_rgba\\(0\\,0\\,0\\,0\\.04\\)\\]:nth-child(21) > .md\\:block.max-h-0.p-0 > ul",
+          "html": "<ul class=\"flex w-full flex-col text-[14px] md:text-base\">",
+          "failureSummary": "Fix all of the following:\n  List element has direct children that are not allowed: a"
+        },
+        {
+          "target": ".bg-\\[\\#F7FFF7\\] > .max-w-\\[1230px\\].sm\\:px-6.px-4 > div > .md\\:mt-\\[64px\\].mt-\\[32px\\].columns-1 > .mb-\\[24px\\].break-inside-avoid.shadow-\\[0_4px_30px_rgba\\(0\\,0\\,0\\,0\\.04\\)\\]:nth-child(1) > .md\\:block.max-h-0.p-0 > ul",
+          "html": "<ul class=\"flex w-full flex-col text-[14px] md:text-base\">",
+          "failureSummary": "Fix all of the following:\n  List element has direct children that are not allowed: a"
+        },
+        {
+          "target": ".bg-\\[\\#F7FFF7\\] > .max-w-\\[1230px\\].sm\\:px-6.px-4 > div > .md\\:mt-\\[64px\\].mt-\\[32px\\].columns-1 > .mb-\\[24px\\].break-inside-avoid.shadow-\\[0_4px_30px_rgba\\(0\\,0\\,0\\,0\\.04\\)\\]:nth-child(2) > .md\\:block.max-h-0.p-0 > ul",
+          "html": "<ul class=\"flex w-full flex-col text-[14px] md:text-base\">",
+          "failureSummary": "Fix all of the following:\n  List element has direct children that are not allowed: a"
+        },
+        {
+          "target": ".bg-\\[\\#F7FFF7\\] > .max-w-\\[1230px\\].sm\\:px-6.px-4 > div > .md\\:mt-\\[64px\\].mt-\\[32px\\].columns-1 > .mb-\\[24px\\].break-inside-avoid.shadow-\\[0_4px_30px_rgba\\(0\\,0\\,0\\,0\\.04\\)\\]:nth-child(3) > .md\\:block.max-h-0.p-0 > ul",
+          "html": "<ul class=\"flex w-full flex-col text-[14px] md:text-base\">",
+          "failureSummary": "Fix all of the following:\n  List element has direct children that are not allowed: a"
+        },
+        {
+          "target": ".bg-\\[\\#F7FFF7\\] > .max-w-\\[1230px\\].sm\\:px-6.px-4 > div > .md\\:mt-\\[64px\\].mt-\\[32px\\].columns-1 > .mb-\\[24px\\].break-inside-avoid.shadow-\\[0_4px_30px_rgba\\(0\\,0\\,0\\,0\\.04\\)\\]:nth-child(4) > .md\\:block.max-h-0.p-0 > ul",
+          "html": "<ul class=\"flex w-full flex-col text-[14px] md:text-base\">",
+          "failureSummary": "Fix all of the following:\n  List element has direct children that are not allowed: a"
+        }
+      ]
+    },
+    {
+      "id": "region",
+      "impact": "moderate",
+      "description": "Ensure all page content is contained by landmarks",
+      "help": "All page content should be contained by landmarks",
+      "helpUrl": "https://dequeuniversity.com/rules/axe/4.12/region?application=playwright",
+      "affectedElements": 56,
+      "nodes": [
+        {
+          "target": ".text-center.z-10.justify-center",
+          "html": "<div class=\"relative text-white z-10 flex flex-col justify-center items-center w-full text-center \">",
+          "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+        },
+        {
+          "target": ".md\\:h-\\[56px\\]",
+          "html": "<input data-slot=\"input\" class=\"file:text-foreground...\" placeholder=\"Search for a busines...\" value=\"\">",
+          "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+        },
+        {
+          "target": ".-bottom-16",
+          "html": "<div class=\"absolute left-1/2 -translate-x-1/2 -bottom-16 shadow-sm w-full max-w-[1087px] bg-white px-[20px] py-[20px] rounded-[8px] justify-between lg:flex  hidden\">",
+          "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+        },
+        {
+          "target": ".max-w-\\[814px\\]",
+          "html": "<div class=\"text-center max-w-[814px] mx-auto w-full\">",
+          "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+        },
+        {
+          "target": ".md\\:py-\\[135px\\].py-\\[54px\\].bg-\\[\\#F9F9F9\\] > .max-w-\\[1230px\\].sm\\:px-6.px-4 > div > .text-\\[20px\\].md\\:text-\\[36px\\].text-center",
+          "html": "<div class=\"font-bold text-[20px] md:text-[36px] text-center flex items-center justify-center\">Regular Purchases Category</div>",
+          "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+        },
+        {
+          "target": ".mb-\\[24px\\].break-inside-avoid.shadow-\\[0_4px_30px_rgba\\(0\\,0\\,0\\,0\\.04\\)\\]:nth-child(1) > .bg-\\[\\#E3F1FF\\].h-\\[56px\\].md\\:h-\\[70px\\] > .gap-2",
+          "html": "<div class=\" flex items-center gap-2 \">",
+          "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+        },
+        {
+          "target": ".md\\:py-\\[135px\\].py-\\[54px\\].bg-\\[\\#F9F9F9\\] > .max-w-\\[1230px\\].sm\\:px-6.px-4 > div > .md\\:mt-\\[64px\\].mt-\\[32px\\].columns-1 > .mb-\\[24px\\].break-inside-avoid.shadow-\\[0_4px_30px_rgba\\(0\\,0\\,0\\,0\\.04\\)\\]:nth-child(1) > .md\\:block.max-h-0.p-0",
+          "html": "<div class=\"w-full transition-all duration-300 overflow-hidden md:block max-h-0 p-0 md:max-h-none md:overflow-visible md:p-4\">",
+          "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+        },
+        {
+          "target": ".mb-\\[24px\\].break-inside-avoid.shadow-\\[0_4px_30px_rgba\\(0\\,0\\,0\\,0\\.04\\)\\]:nth-child(2) > .bg-\\[\\#E3F1FF\\].h-\\[56px\\].md\\:h-\\[70px\\] > .gap-2",
+          "html": "<div class=\" flex items-center gap-2 \">",
+          "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+        },
+        {
+          "target": ".md\\:py-\\[135px\\].py-\\[54px\\].bg-\\[\\#F9F9F9\\] > .max-w-\\[1230px\\].sm\\:px-6.px-4 > div > .md\\:mt-\\[64px\\].mt-\\[32px\\].columns-1 > .mb-\\[24px\\].break-inside-avoid.shadow-\\[0_4px_30px_rgba\\(0\\,0\\,0\\,0\\.04\\)\\]:nth-child(2) > .md\\:block.max-h-0.p-0",
+          "html": "<div class=\"w-full transition-all duration-300 overflow-hidden md:block max-h-0 p-0 md:max-h-none md:overflow-visible md:p-4\">",
+          "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+        },
+        {
+          "target": ".mb-\\[24px\\].break-inside-avoid.shadow-\\[0_4px_30px_rgba\\(0\\,0\\,0\\,0\\.04\\)\\]:nth-child(3) > .bg-\\[\\#E3F1FF\\].h-\\[56px\\].md\\:h-\\[70px\\] > .gap-2",
+          "html": "<div class=\" flex items-center gap-2 \">",
+          "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+        },
+        {
+          "target": ".md\\:py-\\[135px\\].py-\\[54px\\].bg-\\[\\#F9F9F9\\] > .max-w-\\[1230px\\].sm\\:px-6.px-4 > div > .md\\:mt-\\[64px\\].mt-\\[32px\\].columns-1 > .mb-\\[24px\\].break-inside-avoid.shadow-\\[0_4px_30px_rgba\\(0\\,0\\,0\\,0\\.04\\)\\]:nth-child(3) > .md\\:block.max-h-0.p-0",
+          "html": "<div class=\"w-full transition-all duration-300 overflow-hidden md:block max-h-0 p-0 md:max-h-none md:overflow-visible md:p-4\">",
+          "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+        },
+        {
+          "target": ".mb-\\[24px\\].break-inside-avoid.shadow-\\[0_4px_30px_rgba\\(0\\,0\\,0\\,0\\.04\\)\\]:nth-child(4) > .bg-\\[\\#E3F1FF\\].h-\\[56px\\].md\\:h-\\[70px\\] > .gap-2",
+          "html": "<div class=\" flex items-center gap-2 \">",
+          "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+        },
+        {
+          "target": ".md\\:py-\\[135px\\].py-\\[54px\\].bg-\\[\\#F9F9F9\\] > .max-w-\\[1230px\\].sm\\:px-6.px-4 > div > .md\\:mt-\\[64px\\].mt-\\[32px\\].columns-1 > .mb-\\[24px\\].break-inside-avoid.shadow-\\[0_4px_30px_rgba\\(0\\,0\\,0\\,0\\.04\\)\\]:nth-child(4) > .md\\:block.max-h-0.p-0",
+          "html": "<div class=\"w-full transition-all duration-300 overflow-hidden md:block max-h-0 p-0 md:max-h-none md:overflow-visible md:p-4\">",
+          "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+        },
+        {
+          "target": ".mb-\\[24px\\].break-inside-avoid.shadow-\\[0_4px_30px_rgba\\(0\\,0\\,0\\,0\\.04\\)\\]:nth-child(5) > .bg-\\[\\#E3F1FF\\].h-\\[56px\\].md\\:h-\\[70px\\] > .gap-2",
+          "html": "<div class=\" flex items-center gap-2 \">",
+          "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+        },
+        {
+          "target": ".mb-\\[24px\\].break-inside-avoid.shadow-\\[0_4px_30px_rgba\\(0\\,0\\,0\\,0\\.04\\)\\]:nth-child(5) > .md\\:block.max-h-0.p-0",
+          "html": "<div class=\"w-full transition-all duration-300 overflow-hidden md:block max-h-0 p-0 md:max-h-none md:overflow-visible md:p-4\">",
+          "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+        },
+        {
+          "target": ".mb-\\[24px\\].break-inside-avoid.shadow-\\[0_4px_30px_rgba\\(0\\,0\\,0\\,0\\.04\\)\\]:nth-child(6) > .bg-\\[\\#E3F1FF\\].h-\\[56px\\].md\\:h-\\[70px\\] > .gap-2",
+          "html": "<div class=\" flex items-center gap-2 \">",
+          "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+        },
+        {
+          "target": ".mb-\\[24px\\].break-inside-avoid.shadow-\\[0_4px_30px_rgba\\(0\\,0\\,0\\,0\\.04\\)\\]:nth-child(6) > .md\\:block.max-h-0.p-0",
+          "html": "<div class=\"w-full transition-all duration-300 overflow-hidden md:block max-h-0 p-0 md:max-h-none md:overflow-visible md:p-4\">",
+          "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+        },
+        {
+          "target": ".mb-\\[24px\\].break-inside-avoid.shadow-\\[0_4px_30px_rgba\\(0\\,0\\,0\\,0\\.04\\)\\]:nth-child(7) > .bg-\\[\\#E3F1FF\\].h-\\[56px\\].md\\:h-\\[70px\\] > .gap-2",
+          "html": "<div class=\" flex items-center gap-2 \">",
+          "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+        },
+        {
+          "target": ".mb-\\[24px\\].break-inside-avoid.shadow-\\[0_4px_30px_rgba\\(0\\,0\\,0\\,0\\.04\\)\\]:nth-child(7) > .md\\:block.max-h-0.p-0",
+          "html": "<div class=\"w-full transition-all duration-300 overflow-hidden md:block max-h-0 p-0 md:max-h-none md:overflow-visible md:p-4\">",
+          "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+        },
+        {
+          "target": ".mb-\\[24px\\].break-inside-avoid.shadow-\\[0_4px_30px_rgba\\(0\\,0\\,0\\,0\\.04\\)\\]:nth-child(8) > .bg-\\[\\#E3F1FF\\].h-\\[56px\\].md\\:h-\\[70px\\] > .gap-2",
+          "html": "<div class=\" flex items-center gap-2 \">",
+          "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+        },
+        {
+          "target": ".mb-\\[24px\\].break-inside-avoid.shadow-\\[0_4px_30px_rgba\\(0\\,0\\,0\\,0\\.04\\)\\]:nth-child(8) > .md\\:block.max-h-0.p-0",
+          "html": "<div class=\"w-full transition-all duration-300 overflow-hidden md:block max-h-0 p-0 md:max-h-none md:overflow-visible md:p-4\">",
+          "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+        },
+        {
+          "target": ".mb-\\[24px\\].break-inside-avoid.shadow-\\[0_4px_30px_rgba\\(0\\,0\\,0\\,0\\.04\\)\\]:nth-child(9) > .bg-\\[\\#E3F1FF\\].h-\\[56px\\].md\\:h-\\[70px\\] > .gap-2",
+          "html": "<div class=\" flex items-center gap-2 \">",
+          "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+        },
+        {
+          "target": ".mb-\\[24px\\].break-inside-avoid.shadow-\\[0_4px_30px_rgba\\(0\\,0\\,0\\,0\\.04\\)\\]:nth-child(9) > .md\\:block.max-h-0.p-0",
+          "html": "<div class=\"w-full transition-all duration-300 overflow-hidden md:block max-h-0 p-0 md:max-h-none md:overflow-visible md:p-4\">",
+          "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+        },
+        {
+          "target": ".mb-\\[24px\\].break-inside-avoid.shadow-\\[0_4px_30px_rgba\\(0\\,0\\,0\\,0\\.04\\)\\]:nth-child(10) > .bg-\\[\\#E3F1FF\\].h-\\[56px\\].md\\:h-\\[70px\\] > .gap-2",
+          "html": "<div class=\" flex items-center gap-2 \">",
+          "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+        },
+        {
+          "target": ".mb-\\[24px\\].break-inside-avoid.shadow-\\[0_4px_30px_rgba\\(0\\,0\\,0\\,0\\.04\\)\\]:nth-child(10) > .md\\:block.max-h-0.p-0",
+          "html": "<div class=\"w-full transition-all duration-300 overflow-hidden md:block max-h-0 p-0 md:max-h-none md:overflow-visible md:p-4\">",
+          "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+        },
+        {
+          "target": ".mb-\\[24px\\].break-inside-avoid.shadow-\\[0_4px_30px_rgba\\(0\\,0\\,0\\,0\\.04\\)\\]:nth-child(11) > .bg-\\[\\#E3F1FF\\].h-\\[56px\\].md\\:h-\\[70px\\] > .gap-2",
+          "html": "<div class=\" flex items-center gap-2 \">",
+          "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+        },
+        {
+          "target": ".mb-\\[24px\\].break-inside-avoid.shadow-\\[0_4px_30px_rgba\\(0\\,0\\,0\\,0\\.04\\)\\]:nth-child(11) > .md\\:block.max-h-0.p-0",
+          "html": "<div class=\"w-full transition-all duration-300 overflow-hidden md:block max-h-0 p-0 md:max-h-none md:overflow-visible md:p-4\">",
+          "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+        },
+        {
+          "target": ".mb-\\[24px\\].break-inside-avoid.shadow-\\[0_4px_30px_rgba\\(0\\,0\\,0\\,0\\.04\\)\\]:nth-child(12) > .bg-\\[\\#E3F1FF\\].h-\\[56px\\].md\\:h-\\[70px\\] > .gap-2",
+          "html": "<div class=\" flex items-center gap-2 \">",
+          "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+        },
+        {
+          "target": ".mb-\\[24px\\].break-inside-avoid.shadow-\\[0_4px_30px_rgba\\(0\\,0\\,0\\,0\\.04\\)\\]:nth-child(12) > .md\\:block.max-h-0.p-0",
+          "html": "<div class=\"w-full transition-all duration-300 overflow-hidden md:block max-h-0 p-0 md:max-h-none md:overflow-visible md:p-4\">",
+          "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+        },
+        {
+          "target": ".mb-\\[24px\\].break-inside-avoid.shadow-\\[0_4px_30px_rgba\\(0\\,0\\,0\\,0\\.04\\)\\]:nth-child(13) > .bg-\\[\\#E3F1FF\\].h-\\[56px\\].md\\:h-\\[70px\\] > .gap-2",
+          "html": "<div class=\" flex items-center gap-2 \">",
+          "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+        },
+        {
+          "target": ".mb-\\[24px\\].break-inside-avoid.shadow-\\[0_4px_30px_rgba\\(0\\,0\\,0\\,0\\.04\\)\\]:nth-child(13) > .md\\:block.max-h-0.p-0",
+          "html": "<div class=\"w-full transition-all duration-300 overflow-hidden md:block max-h-0 p-0 md:max-h-none md:overflow-visible md:p-4\">",
+          "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+        },
+        {
+          "target": ".mb-\\[24px\\].break-inside-avoid.shadow-\\[0_4px_30px_rgba\\(0\\,0\\,0\\,0\\.04\\)\\]:nth-child(14) > .bg-\\[\\#E3F1FF\\].h-\\[56px\\].md\\:h-\\[70px\\] > .gap-2",
+          "html": "<div class=\" flex items-center gap-2 \">",
+          "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+        },
+        {
+          "target": ".mb-\\[24px\\].break-inside-avoid.shadow-\\[0_4px_30px_rgba\\(0\\,0\\,0\\,0\\.04\\)\\]:nth-child(14) > .md\\:block.max-h-0.p-0",
+          "html": "<div class=\"w-full transition-all duration-300 overflow-hidden md:block max-h-0 p-0 md:max-h-none md:overflow-visible md:p-4\">",
+          "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+        },
+        {
+          "target": ".mb-\\[24px\\].break-inside-avoid.shadow-\\[0_4px_30px_rgba\\(0\\,0\\,0\\,0\\.04\\)\\]:nth-child(15) > .bg-\\[\\#E3F1FF\\].h-\\[56px\\].md\\:h-\\[70px\\] > .gap-2",
+          "html": "<div class=\" flex items-center gap-2 \">",
+          "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+        },
+        {
+          "target": ".mb-\\[24px\\].break-inside-avoid.shadow-\\[0_4px_30px_rgba\\(0\\,0\\,0\\,0\\.04\\)\\]:nth-child(15) > .md\\:block.max-h-0.p-0",
+          "html": "<div class=\"w-full transition-all duration-300 overflow-hidden md:block max-h-0 p-0 md:max-h-none md:overflow-visible md:p-4\">",
+          "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+        },
+        {
+          "target": ".mb-\\[24px\\].break-inside-avoid.shadow-\\[0_4px_30px_rgba\\(0\\,0\\,0\\,0\\.04\\)\\]:nth-child(16) > .bg-\\[\\#E3F1FF\\].h-\\[56px\\].md\\:h-\\[70px\\] > .gap-2",
+          "html": "<div class=\" flex items-center gap-2 \">",
+          "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+        },
+        {
+          "target": ".mb-\\[24px\\].break-inside-avoid.shadow-\\[0_4px_30px_rgba\\(0\\,0\\,0\\,0\\.04\\)\\]:nth-child(16) > .md\\:block.max-h-0.p-0",
+          "html": "<div class=\"w-full transition-all duration-300 overflow-hidden md:block max-h-0 p-0 md:max-h-none md:overflow-visible md:p-4\">",
+          "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+        },
+        {
+          "target": ".mb-\\[24px\\].break-inside-avoid.shadow-\\[0_4px_30px_rgba\\(0\\,0\\,0\\,0\\.04\\)\\]:nth-child(17) > .bg-\\[\\#E3F1FF\\].h-\\[56px\\].md\\:h-\\[70px\\] > .gap-2",
+          "html": "<div class=\" flex items-center gap-2 \">",
+          "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+        },
+        {
+          "target": ".mb-\\[24px\\].break-inside-avoid.shadow-\\[0_4px_30px_rgba\\(0\\,0\\,0\\,0\\.04\\)\\]:nth-child(17) > .md\\:block.max-h-0.p-0",
+          "html": "<div class=\"w-full transition-all duration-300 overflow-hidden md:block max-h-0 p-0 md:max-h-none md:overflow-visible md:p-4\">",
+          "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+        },
+        {
+          "target": ".mb-\\[24px\\].break-inside-avoid.shadow-\\[0_4px_30px_rgba\\(0\\,0\\,0\\,0\\.04\\)\\]:nth-child(18) > .bg-\\[\\#E3F1FF\\].h-\\[56px\\].md\\:h-\\[70px\\] > .gap-2",
+          "html": "<div class=\" flex items-center gap-2 \">",
+          "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+        },
+        {
+          "target": ".mb-\\[24px\\].break-inside-avoid.shadow-\\[0_4px_30px_rgba\\(0\\,0\\,0\\,0\\.04\\)\\]:nth-child(18) > .md\\:block.max-h-0.p-0",
+          "html": "<div class=\"w-full transition-all duration-300 overflow-hidden md:block max-h-0 p-0 md:max-h-none md:overflow-visible md:p-4\">",
+          "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+        },
+        {
+          "target": ".mb-\\[24px\\].break-inside-avoid.shadow-\\[0_4px_30px_rgba\\(0\\,0\\,0\\,0\\.04\\)\\]:nth-child(19) > .bg-\\[\\#E3F1FF\\].h-\\[56px\\].md\\:h-\\[70px\\] > .gap-2",
+          "html": "<div class=\" flex items-center gap-2 \">",
+          "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+        },
+        {
+          "target": ".mb-\\[24px\\].break-inside-avoid.shadow-\\[0_4px_30px_rgba\\(0\\,0\\,0\\,0\\.04\\)\\]:nth-child(19) > .md\\:block.max-h-0.p-0",
+          "html": "<div class=\"w-full transition-all duration-300 overflow-hidden md:block max-h-0 p-0 md:max-h-none md:overflow-visible md:p-4\">",
+          "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+        },
+        {
+          "target": ".mb-\\[24px\\].break-inside-avoid.shadow-\\[0_4px_30px_rgba\\(0\\,0\\,0\\,0\\.04\\)\\]:nth-child(20) > .bg-\\[\\#E3F1FF\\].h-\\[56px\\].md\\:h-\\[70px\\] > .gap-2",
+          "html": "<div class=\" flex items-center gap-2 \">",
+          "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+        },
+        {
+          "target": ".mb-\\[24px\\].break-inside-avoid.shadow-\\[0_4px_30px_rgba\\(0\\,0\\,0\\,0\\.04\\)\\]:nth-child(20) > .md\\:block.max-h-0.p-0",
+          "html": "<div class=\"w-full transition-all duration-300 overflow-hidden md:block max-h-0 p-0 md:max-h-none md:overflow-visible md:p-4\">",
+          "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+        },
+        {
+          "target": ".mb-\\[24px\\].break-inside-avoid.shadow-\\[0_4px_30px_rgba\\(0\\,0\\,0\\,0\\.04\\)\\]:nth-child(21) > .bg-\\[\\#E3F1FF\\].h-\\[56px\\].md\\:h-\\[70px\\] > .gap-2",
+          "html": "<div class=\" flex items-center gap-2 \">",
+          "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+        },
+        {
+          "target": ".mb-\\[24px\\].break-inside-avoid.shadow-\\[0_4px_30px_rgba\\(0\\,0\\,0\\,0\\.04\\)\\]:nth-child(21) > .md\\:block.max-h-0.p-0",
+          "html": "<div class=\"w-full transition-all duration-300 overflow-hidden md:block max-h-0 p-0 md:max-h-none md:overflow-visible md:p-4\">",
+          "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+        },
+        {
+          "target": ".bg-\\[\\#F7FFF7\\] > .max-w-\\[1230px\\].sm\\:px-6.px-4 > div > .text-\\[20px\\].md\\:text-\\[36px\\].text-center",
+          "html": "<div class=\"font-bold text-[20px] md:text-[36px] text-center flex items-center justify-center\">Investment Category</div>",
+          "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+        },
+        {
+          "target": ".mb-\\[24px\\].break-inside-avoid.shadow-\\[0_4px_30px_rgba\\(0\\,0\\,0\\,0\\.04\\)\\]:nth-child(1) > .bg-\\[\\#EAFFF2\\].h-\\[56px\\].md\\:h-\\[70px\\] > .gap-2",
+          "html": "<div class=\" flex items-center gap-2 \">",
+          "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+        },
+        {
+          "target": ".bg-\\[\\#F7FFF7\\] > .max-w-\\[1230px\\].sm\\:px-6.px-4 > div > .md\\:mt-\\[64px\\].mt-\\[32px\\].columns-1 > .mb-\\[24px\\].break-inside-avoid.shadow-\\[0_4px_30px_rgba\\(0\\,0\\,0\\,0\\.04\\)\\]:nth-child(1) > .md\\:block.max-h-0.p-0",
+          "html": "<div class=\"w-full transition-all duration-300 overflow-hidden md:block max-h-0 p-0 md:max-h-none md:overflow-visible md:p-4\">",
+          "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+        },
+        {
+          "target": ".mb-\\[24px\\].break-inside-avoid.shadow-\\[0_4px_30px_rgba\\(0\\,0\\,0\\,0\\.04\\)\\]:nth-child(2) > .bg-\\[\\#EAFFF2\\].h-\\[56px\\].md\\:h-\\[70px\\] > .gap-2",
+          "html": "<div class=\" flex items-center gap-2 \">",
+          "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+        },
+        {
+          "target": ".bg-\\[\\#F7FFF7\\] > .max-w-\\[1230px\\].sm\\:px-6.px-4 > div > .md\\:mt-\\[64px\\].mt-\\[32px\\].columns-1 > .mb-\\[24px\\].break-inside-avoid.shadow-\\[0_4px_30px_rgba\\(0\\,0\\,0\\,0\\.04\\)\\]:nth-child(2) > .md\\:block.max-h-0.p-0",
+          "html": "<div class=\"w-full transition-all duration-300 overflow-hidden md:block max-h-0 p-0 md:max-h-none md:overflow-visible md:p-4\">",
+          "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+        },
+        {
+          "target": ".mb-\\[24px\\].break-inside-avoid.shadow-\\[0_4px_30px_rgba\\(0\\,0\\,0\\,0\\.04\\)\\]:nth-child(3) > .bg-\\[\\#EAFFF2\\].h-\\[56px\\].md\\:h-\\[70px\\] > .gap-2",
+          "html": "<div class=\" flex items-center gap-2 \">",
+          "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+        },
+        {
+          "target": ".bg-\\[\\#F7FFF7\\] > .max-w-\\[1230px\\].sm\\:px-6.px-4 > div > .md\\:mt-\\[64px\\].mt-\\[32px\\].columns-1 > .mb-\\[24px\\].break-inside-avoid.shadow-\\[0_4px_30px_rgba\\(0\\,0\\,0\\,0\\.04\\)\\]:nth-child(3) > .md\\:block.max-h-0.p-0",
+          "html": "<div class=\"w-full transition-all duration-300 overflow-hidden md:block max-h-0 p-0 md:max-h-none md:overflow-visible md:p-4\">",
+          "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+        },
+        {
+          "target": ".mb-\\[24px\\].break-inside-avoid.shadow-\\[0_4px_30px_rgba\\(0\\,0\\,0\\,0\\.04\\)\\]:nth-child(4) > .bg-\\[\\#EAFFF2\\].h-\\[56px\\].md\\:h-\\[70px\\] > .gap-2",
+          "html": "<div class=\" flex items-center gap-2 \">",
+          "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+        },
+        {
+          "target": ".bg-\\[\\#F7FFF7\\] > .max-w-\\[1230px\\].sm\\:px-6.px-4 > div > .md\\:mt-\\[64px\\].mt-\\[32px\\].columns-1 > .mb-\\[24px\\].break-inside-avoid.shadow-\\[0_4px_30px_rgba\\(0\\,0\\,0\\,0\\.04\\)\\]:nth-child(4) > .md\\:block.max-h-0.p-0",
+          "html": "<div class=\"w-full transition-all duration-300 overflow-hidden md:block max-h-0 p-0 md:max-h-none md:overflow-visible md:p-4\">",
+          "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+        }
+      ]
+    }
+  ],
+  "passes": [
+    {
+      "id": "aria-allowed-attr",
+      "description": "Ensure an element's role supports its ARIA attributes"
+    },
+    {
+      "id": "aria-allowed-role",
+      "description": "Ensure role attribute has an appropriate value for the element"
+    },
+    {
+      "id": "aria-conditional-attr",
+      "description": "Ensure ARIA attributes are used as described in the specification of the element's role"
+    },
+    {
+      "id": "aria-deprecated-role",
+      "description": "Ensure elements do not use deprecated roles"
+    },
+    {
+      "id": "aria-hidden-body",
+      "description": "Ensure aria-hidden=\"true\" is not present on the document body."
+    },
+    {
+      "id": "aria-hidden-focus",
+      "description": "Ensure aria-hidden elements are not focusable nor contain focusable elements"
+    },
+    {
+      "id": "aria-prohibited-attr",
+      "description": "Ensure ARIA attributes are not prohibited for an element's role"
+    },
+    {
+      "id": "aria-required-attr",
+      "description": "Ensure elements with ARIA roles have all required ARIA attributes"
+    },
+    {
+      "id": "aria-roles",
+      "description": "Ensure all elements with a role attribute use a valid value"
+    },
+    {
+      "id": "aria-valid-attr-value",
+      "description": "Ensure all ARIA attributes have valid values"
+    },
+    {
+      "id": "aria-valid-attr",
+      "description": "Ensure attributes that begin with aria- are valid ARIA attributes"
+    },
+    {
+      "id": "button-name",
+      "description": "Ensure buttons have discernible text"
+    },
+    {
+      "id": "bypass",
+      "description": "Ensure each page has at least one mechanism for a user to bypass navigation and jump straight to the content"
+    },
+    {
+      "id": "color-contrast",
+      "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds"
+    },
+    {
+      "id": "document-title",
+      "description": "Ensure each HTML document contains a non-empty <title> element"
+    },
+    {
+      "id": "empty-heading",
+      "description": "Ensure headings have discernible text"
+    },
+    {
+      "id": "form-field-multiple-labels",
+      "description": "Ensure form field does not have multiple label elements"
+    },
+    {
+      "id": "heading-order",
+      "description": "Ensure the order of headings is semantically correct"
+    },
+    {
+      "id": "html-has-lang",
+      "description": "Ensure every HTML document has a lang attribute"
+    },
+    {
+      "id": "html-lang-valid",
+      "description": "Ensure the lang attribute of the <html> element has a valid value"
+    },
+    {
+      "id": "image-alt",
+      "description": "Ensure <img> elements have alternative text or a role of none or presentation"
+    },
+    {
+      "id": "image-redundant-alt",
+      "description": "Ensure image alternative is not repeated as text"
+    },
+    {
+      "id": "label-title-only",
+      "description": "Ensure that every form element has a visible label and is not solely labeled using hidden labels, or the title or aria-describedby attributes"
+    },
+    {
+      "id": "label",
+      "description": "Ensure every form element has a label"
+    },
+    {
+      "id": "landmark-banner-is-top-level",
+      "description": "Ensure the banner landmark is at top level"
+    },
+    {
+      "id": "landmark-contentinfo-is-top-level",
+      "description": "Ensure the contentinfo landmark is at top level"
+    },
+    {
+      "id": "landmark-no-duplicate-banner",
+      "description": "Ensure the document has at most one banner landmark"
+    },
+    {
+      "id": "landmark-no-duplicate-contentinfo",
+      "description": "Ensure the document has at most one contentinfo landmark"
+    },
+    {
+      "id": "landmark-unique",
+      "description": "Ensure landmarks are unique"
+    },
+    {
+      "id": "link-name",
+      "description": "Ensure links have discernible text"
+    },
+    {
+      "id": "meta-viewport-large",
+      "description": "Ensure <meta name=\"viewport\"> can scale a significant amount"
+    },
+    {
+      "id": "meta-viewport",
+      "description": "Ensure <meta name=\"viewport\"> does not disable text scaling and zooming"
+    },
+    {
+      "id": "nested-interactive",
+      "description": "Ensure interactive controls are not nested as they are not always announced by screen readers or can cause focus problems for assistive technologies"
+    },
+    {
+      "id": "page-has-heading-one",
+      "description": "Ensure that the page, or at least one of its frames contains a level-one heading"
+    },
+    {
+      "id": "region",
+      "description": "Ensure all page content is contained by landmarks"
+    }
+  ]
+}

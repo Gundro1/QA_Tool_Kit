@@ -1,0 +1,20 @@
+{
+  "name": "qa-toolkit",
+  "version": "1.0.0",
+  "description": "Universal QA Toolkit — browser testing, web search, report generation, accessibility audits, visual regression",
+  "author": "Azeez",
+  "license": "MIT",
+  "scripts": {
+    "test:browser": "node browser-test.js",
+    "test:search": "node web-search.js",
+    "test:a11y": "node accessibility-check.js",
+    "report": "node report-generator.js",
+    "diff": "node visual-diff.js"
+  },
+  "dependencies": {
+    "playwright": "^1.52.0",
+    "@axe-core/playwright": "^4.10.0",
+    "pixelmatch": "^6.0.0",
+    "pngjs": "^7.0.0"
+  }
+}
