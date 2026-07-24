@@ -1,0 +1,3 @@
+docx2pdf
+PyMuPDF
+pywin32

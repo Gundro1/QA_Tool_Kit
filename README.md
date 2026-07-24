@@ -13,6 +13,7 @@ Built by **Azeez** — works for any project (BisViews, PrimBooks, or anything e
 | `report-generator.js` | Generate professional HTML + PDF reports from JSON data (4 themes) |
 | `accessibility-check.js` | WCAG accessibility audits using axe-core |
 | `visual-diff.js` | Compare screenshots pixel-by-pixel for visual regression |
+| `docx_preview.py` | Render a Word document to page images for real visual verification (Python, Windows/Word only) |
 
 ## 🚀 Setup
 
@@ -21,6 +22,12 @@ git clone https://github.com/YOUR_USERNAME/qa-toolkit.git
 cd qa-toolkit
 npm install
 npx playwright install chromium
+```
+
+### Python tool setup (docx_preview.py only)
+`docx_preview.py` is the one Python tool in this toolkit — everything else here is Node. It needs Microsoft Word installed (it converts through Word itself via COM automation, so the preview matches exactly what Word renders) and is Windows-only.
+```bash
+pip install -r requirements.txt
 ```
 
 ## 📖 Usage
@@ -61,6 +68,18 @@ node accessibility-check.js --url "https://example.com" --report a11y-audit
 ### Visual Diff
 ```bash
 node visual-diff.js --baseline before.png --current after.png --output diff.png
+```
+
+### Document Preview
+```bash
+# Render every page of a Word doc to PNGs, for actually looking at an edit
+python docx_preview.py "report.docx"
+
+# Just specific pages
+python docx_preview.py "report.docx" --pages 1,3-5
+
+# Custom output folder and resolution
+python docx_preview.py "report.docx" -o previews --dpi 200
 ```
 
 ## 🔧 Claude Code Integration
