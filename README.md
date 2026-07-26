@@ -14,6 +14,7 @@ Built by **Azeez** — works for any project (BisViews, PrimBooks, or anything e
 | `accessibility-check.js` | WCAG accessibility audits using axe-core |
 | `visual-diff.js` | Compare screenshots pixel-by-pixel for visual regression |
 | `docx_preview.py` | Render a Word document to page images for real visual verification (Python, Windows/Word only) |
+| `xlsx_preview.py` | Render an Excel workbook (or one sheet) to page images for real visual verification (Python, Windows/Excel only) |
 
 ## 🚀 Setup
 
@@ -24,8 +25,8 @@ npm install
 npx playwright install chromium
 ```
 
-### Python tool setup (docx_preview.py only)
-`docx_preview.py` is the one Python tool in this toolkit — everything else here is Node. It needs Microsoft Word installed (it converts through Word itself via COM automation, so the preview matches exactly what Word renders) and is Windows-only.
+### Python tool setup (docx_preview.py / xlsx_preview.py)
+These are the Python tools in this toolkit — everything else here is Node. They convert through Office itself via COM automation (Word for `.docx`, Excel for `.xlsx`), so the preview closely matches what the app renders. Windows + the relevant Office app required.
 ```bash
 pip install -r requirements.txt
 ```
@@ -81,6 +82,19 @@ python docx_preview.py "report.docx" --pages 1,3-5
 # Custom output folder and resolution
 python docx_preview.py "report.docx" -o previews --dpi 200
 ```
+
+### Spreadsheet Preview
+```bash
+# Render every sheet of a workbook to PNGs, for actually looking at the styling
+python xlsx_preview.py "tracker.xlsx"
+
+# Just one sheet
+python xlsx_preview.py "tracker.xlsx" --sheet Summary
+
+# Custom output folder and resolution
+python xlsx_preview.py "tracker.xlsx" -o previews --dpi 150
+```
+Each sheet is set to fit-to-width so columns aren't split across pages. Colours are close to Excel's screen rendering but not always pixel-exact — for final colour sign-off, the file open in Excel is ground truth.
 
 ## 🔧 Claude Code Integration
 
