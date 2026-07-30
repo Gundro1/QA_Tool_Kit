@@ -1,3 +1,8 @@
 docx2pdf
 PyMuPDF
 pywin32
+openpyxl
+pandas
+requests
+beautifulsoup4
+lxml

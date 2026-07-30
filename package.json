@@ -1,7 +1,7 @@
 {
   "name": "qa-toolkit",
-  "version": "1.0.0",
-  "description": "Universal QA Toolkit — browser testing, web search, report generation, accessibility audits, visual regression",
+  "version": "1.1.0",
+  "description": "Universal QA & Data Engineering Toolkit — browser testing, web search, report generation, accessibility audits, visual regression, Excel ETL, lightweight HTTP fetch, store locator web scraping, and data validation",
   "author": "Azeez",
   "license": "MIT",
   "scripts": {
@@ -9,7 +9,9 @@
     "test:search": "node web-search.js",
     "test:a11y": "node accessibility-check.js",
     "report": "node report-generator.js",
-    "diff": "node visual-diff.js"
+    "diff": "node visual-diff.js",
+    "fetch": "node url-fetch.js",
+    "scrape": "node web-scraper.js"
   },
   "dependencies": {
     "playwright": "^1.52.0",

@@ -1,112 +1,117 @@
-# 🛠️ QA Toolkit
+# Universal QA & Data Engineering Tool Kit
 
-A universal, project-independent QA automation toolkit for use with Claude Code and any AI coding assistant.
+A universal, project-independent QA automation and data engineering toolkit for use with Claude Code, Antigravity, and any AI coding assistant.
+Built by Azeez — works for any project (BisViews, PrimBooks, or enterprise data pipeline audits).
 
-Built by **Azeez** — works for any project (BisViews, PrimBooks, or anything else).
+---
 
-## ✨ Features
+## ✨ Full Tool Arsenal (13 Tools)
 
-| Tool | Description |
-|------|-------------|
-| `browser-test.js` | Navigate any website, take screenshots, check links/images, fill forms, extract content |
-| `web-search.js` | Search the web (DuckDuckGo + Bing fallback) — no API key needed |
-| `report-generator.js` | Generate professional HTML + PDF reports from JSON data (4 themes) |
-| `accessibility-check.js` | WCAG accessibility audits using axe-core |
-| `visual-diff.js` | Compare screenshots pixel-by-pixel for visual regression |
-| `docx_preview.py` | Render a Word document to page images for real visual verification (Python, Windows/Word only) |
-| `xlsx_preview.py` | Render an Excel workbook (or one sheet) to page images for real visual verification (Python, Windows/Excel only) |
+### 🎨 Frontend & UI Testing
+- `browser-test.js` — Screenshots, link checks, form interactions, mobile responsiveness views
+- `web-search.js` — Lightweight web search scraper
+- `accessibility-check.js` — WCAG accessibility automated audits via `axe-core`
+- `visual-diff.js` — Pixel-by-pixel image comparison (`pixelmatch`)
+- `report-generator.js` — HTML + PDF QA audit report generator
 
-## 🚀 Setup
+### 📊 Document & Visual Preview
+- `docx_preview.py` — High-fidelity Word (`.docx`) to PNG page rendering via Office COM
+- `xlsx_preview.py` — High-fidelity Excel (`.xlsx`) to PNG sheet rendering via Office COM
+
+### ⚡ Data Pipeline & Engineering (NEW)
+- `excel-ops.py` — Read, write, merge, deduplicate, and clean Excel/CSV workbooks
+- `url-fetch.js` — Lightweight HTTP URL content fetcher (Markdown, JSON-LD, XML) without browser overhead
+- `web-scraper.js` — Playwright store locator scraper for dynamic JS pages & JSON-LD data
+- `pdf-print.py` — Headless Edge/Chrome HTML-to-PDF report printer
+- `address-parser.py` — Belgian/general postal code-to-province mapping & address standardizer
+- `data-validator.py` — Pre-audit sanity checker (null counts, duplicates, encoding corruptions)
+
+---
+
+## 📘 Comprehensive Architecture & Teaching Guide
+For an in-depth educational guide on the difference between Frontend UI QA and Data Pipeline QA, read:
+👉 **[TOOLKIT-GAP-ANALYSIS.md](./TOOLKIT-GAP-ANALYSIS.md)**
+
+---
+
+## 🚀 Quickstart & Setup
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/qa-toolkit.git
-cd qa-toolkit
+# 1. Clone Repository
+git clone https://github.com/Gundro1/QA_Tool_Kit.git
+cd QA_Tool_Kit
+
+# 2. Install Node.js Dependencies
 npm install
 npx playwright install chromium
-```
 
-### Python tool setup (docx_preview.py / xlsx_preview.py)
-These are the Python tools in this toolkit — everything else here is Node. They convert through Office itself via COM automation (Word for `.docx`, Excel for `.xlsx`), so the preview closely matches what the app renders. Windows + the relevant Office app required.
-```bash
+# 3. Install Python Dependencies
 pip install -r requirements.txt
 ```
 
-## 📖 Usage
+---
 
-### Browser Test
+## 💻 CLI Usage Examples
+
+### 1. Excel Operations (`excel-ops.py`)
 ```bash
-# Screenshot + link check
-node browser-test.js --url "https://example.com" --screenshot --check-links
+# Read Excel/CSV into JSON statistics
+python excel-ops.py read "data.xlsx" --stats
 
-# Mobile view + extract forms
-node browser-test.js --url "https://example.com" --mobile --extract-forms
+# Merge multiple Excel files and deduplicate by composite key
+python excel-ops.py merge "v1.xlsx" "v2.xlsx" --dedup-key "franchise_name,address,postal_code" --output "v3.xlsx"
 
-# Fill and submit a form
-node browser-test.js --url "https://example.com" --fill '{"#email":"test@test.com"}' --click "#submit"
+# Clean strings (trim whitespace, titlecase addresses)
+python excel-ops.py clean "data.xlsx" --trim --title-case "address,city" --output "cleaned.xlsx"
 ```
 
-### Web Search
+### 2. Lightweight HTTP Fetch (`url-fetch.js`)
 ```bash
-node web-search.js --query "business name status" --results 10
-node web-search.js --query "PrimBooks ERP" --output results.json
+# Fetch web page text as clean Markdown (no browser needed)
+node url-fetch.js --url "https://example.com" --format markdown
+
+# Extract JSON-LD structured data
+node url-fetch.js --url "https://example.com/store" --format jsonld --output data.json
 ```
 
-### Report Generator
+### 3. Store Locator Web Scraper (`web-scraper.js`)
 ```bash
-# From JSON data file
-node report-generator.js --title "QA Audit Report" --input data.json --output report
+# Extract dynamic store locator cards using Playwright
+node web-scraper.js --url "https://brand.be/stores" --selector "div.store-card" --fields "name:h3,address:.addr,phone:.tel" --output stores.json
 
-# Themes: dark (default), light, blue, green
-node report-generator.js --title "Entity Audit" --author "Azeez" --input findings.json --output audit --theme blue
+# Extract schema JSON-LD store markers
+node web-scraper.js --url "https://brand.be/locations" --strategy json-ld --output stores.json
 ```
 
-### Accessibility Check
+### 4. Headless PDF Generator (`pdf-print.py`)
 ```bash
-node accessibility-check.js --url "https://example.com"
-node accessibility-check.js --url "https://example.com" --report a11y-audit
+# Print HTML report to A4 PDF using MS Edge/Chrome
+python pdf-print.py "audit.html" --output "audit.pdf"
 ```
 
-### Visual Diff
+### 5. Address Parser & Province Mapper (`address-parser.py`)
 ```bash
-node visual-diff.js --baseline before.png --current after.png --output diff.png
+# Lookup Belgian province from 4-digit postal code
+python address-parser.py --country BE --postal 1000
+# Output: {"postal_code": "1000", "country": "BE", "is_valid": true, "province": "Brussels-Capital Region"}
 ```
 
-### Document Preview
+### 6. Data Integrity Pre-Audit Checker (`data-validator.py`)
 ```bash
-# Render every page of a Word doc to PNGs, for actually looking at an edit
-python docx_preview.py "report.docx"
-
-# Just specific pages
-python docx_preview.py "report.docx" --pages 1,3-5
-
-# Custom output folder and resolution
-python docx_preview.py "report.docx" -o previews --dpi 200
+# Check null counts, fuzzy duplicates, and encoding issues in dataset
+python data-validator.py "dataset.xlsx" --dedup-key "name,address"
 ```
 
-### Spreadsheet Preview
-```bash
-# Render every sheet of a workbook to PNGs, for actually looking at the styling
-python xlsx_preview.py "tracker.xlsx"
+---
 
-# Just one sheet
-python xlsx_preview.py "tracker.xlsx" --sheet Summary
-
-# Custom output folder and resolution
-python xlsx_preview.py "tracker.xlsx" -o previews --dpi 150
-```
-Each sheet is set to fit-to-width so columns aren't split across pages. Colours are close to Excel's screen rendering but not always pixel-exact — for final colour sign-off, the file open in Excel is ground truth.
-
-## 🔧 Claude Code Integration
-
-### Custom Commands
-Copy `.claude/commands/` to your home directory to get:
-- `/qa-test <url>` — Full QA audit
-- `/generate-report <file>` — Create HTML+PDF report
+## 🛠 Custom Claude Code Slash Commands
+Copy `.claude/commands/` to your home directory (`~/.claude/commands/`) to get instant access in Claude Code:
+- `/qa-test <url>` — Execute browser UI testing audit
+- `/generate-report <file>` — Generate HTML & PDF reports
 - `/search-web <query>` — Search the web
+- `/excel-merge <files>` — Programmatically merge Excel datasets
 
-### MCP Server
-Copy `.claude/mcp.json` to `~/.claude/` to give Claude Code native URL fetching.
+---
 
-## 📄 License
-
-MIT
+## 📜 License
+MIT © Azeez
