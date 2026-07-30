@@ -28,9 +28,9 @@ Built by Azeez — works for any project (BisViews, PrimBooks, or enterprise dat
 
 ---
 
-## 📘 Comprehensive Architecture & Teaching Guide
-For an in-depth educational guide on the difference between Frontend UI QA and Data Pipeline QA, read:
-👉 **[TOOLKIT-GAP-ANALYSIS.md](./TOOLKIT-GAP-ANALYSIS.md)**
+## 📘 Comprehensive Architecture & Teaching Guides
+- 🎓 **[AI-ASSISTANT-GUIDE.md](./AI-ASSISTANT-GUIDE.md)** — Comprehensive guide on configuring any AI Assistant (Claude Code, Cursor, Copilot) with anti-hallucination habits and tools.
+- 📐 **[TOOLKIT-GAP-ANALYSIS.md](./TOOLKIT-GAP-ANALYSIS.md)** — Architectural breakdown of Frontend UI QA vs. Data Pipeline QA capabilities.
 
 ---
 
