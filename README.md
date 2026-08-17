@@ -19,10 +19,10 @@ Built by Azeez — works for any project (BisViews, PrimBooks, or enterprise dat
 - `xlsx_preview.py` — High-fidelity Excel (`.xlsx`) to PNG sheet rendering via Office COM
 
 ### ⚡ Data Pipeline & Smart Engineering
-- `fast-dns-verifier.py` — **[NEW]** Zero-cost 10ms OS DNS socket verifier for 1,000+ domains (bypasses Cloudflare 403/429 bot blocks)
-- `brand-existence-checker.py` — **[NEW]** Full dataset brand presence & B2B misrepresentation verification engine
-- `fuzzy-dedup.py` — **[NEW]** High-speed Levenshtein & token-sort fuzzy duplicate store listing detector
-- `taxonomy-aligner.py` — **[NEW]** Intra-franchise subcategory majority taxonomy auto-aligner
+- `fast-dns-verifier.py` — Zero-cost 10ms OS DNS socket verifier for 1,000+ domains (bypasses Cloudflare 403/429 bot blocks)
+- `brand-existence-checker.py` — Full dataset brand presence & B2B misrepresentation verification engine
+- `fuzzy-dedup.py` — High-speed Levenshtein & token-sort fuzzy duplicate store listing detector
+- `taxonomy-aligner.py` — Intra-franchise subcategory majority taxonomy auto-aligner
 - `excel-ops.py` — Read, write, merge, deduplicate, and clean Excel/CSV workbooks
 - `url-fetch.js` — Lightweight HTTP URL content fetcher (Markdown, JSON-LD, XML) without browser overhead
 - `web-scraper.js` — Playwright store locator scraper for dynamic JS pages & JSON-LD data
@@ -33,8 +33,8 @@ Built by Azeez — works for any project (BisViews, PrimBooks, or enterprise dat
 ---
 
 ## 📘 Comprehensive Architecture & Teaching Guides
-- 🎓 **[AI-ASSISTANT-GUIDE.md](./AI-ASSISTANT-GUIDE.md)** — Comprehensive guide on configuring any AI Assistant (Claude Code, Cursor, Copilot) with anti-hallucination habits and tools.
-- 📐 **[TOOLKIT-GAP-ANALYSIS.md](./TOOLKIT-GAP-ANALYSIS.md)** — Architectural breakdown of Frontend UI QA vs. Data Pipeline QA capabilities.
+- 🎓 [AI-ASSISTANT-GUIDE.md](AI-ASSISTANT-GUIDE.md) — Comprehensive guide on configuring any AI Assistant (Claude Code, Cursor, Copilot) with anti-hallucination habits and tools.
+- 📐 [TOOLKIT-GAP-ANALYSIS.md](TOOLKIT-GAP-ANALYSIS.md) — Architectural breakdown of Frontend UI QA vs. Data Pipeline QA capabilities.
 
 ---
 
