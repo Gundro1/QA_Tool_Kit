@@ -7,7 +7,9 @@ Author: Azeez
 import os
 import sys
 import argparse
+import shutil
 import subprocess
+from pathlib import Path
 
 def find_browser_binary():
     """Find local Microsoft Edge or Google Chrome binary path."""
@@ -25,6 +27,20 @@ def find_browser_binary():
     for p in edge_paths + chrome_paths:
         if os.path.exists(p):
             return p
+    # Linux / macOS: an explicit CHROME_PATH, then common binaries on PATH, then
+    # the macOS app bundles.
+    if os.environ.get("CHROME_PATH") and os.path.exists(os.environ["CHROME_PATH"]):
+        return os.environ["CHROME_PATH"]
+    for name in ("google-chrome", "google-chrome-stable", "chromium", "chromium-browser",
+                 "microsoft-edge", "microsoft-edge-stable", "msedge"):
+        found = shutil.which(name)
+        if found:
+            return found
+    for p in ("/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
+              "/Applications/Microsoft Edge.app/Contents/MacOS/Microsoft Edge",
+              "/Applications/Chromium.app/Contents/MacOS/Chromium"):
+        if os.path.exists(p):
+            return p
     return None
 
 def compile_html_to_pdf(html_file, output_pdf=None, landscape=False, print_background=True):
@@ -35,7 +51,8 @@ def compile_html_to_pdf(html_file, output_pdf=None, landscape=False, print_backg
 
     browser = find_browser_binary()
     if not browser:
-        print("Error: Neither Microsoft Edge nor Google Chrome executable was found.", file=sys.stderr)
+        print("Error: Neither Microsoft Edge nor Google Chrome/Chromium was found. "
+              "Install one, or set CHROME_PATH to its executable.", file=sys.stderr)
         sys.exit(1)
 
     abs_html = os.path.abspath(html_file)
@@ -51,7 +68,7 @@ def compile_html_to_pdf(html_file, output_pdf=None, landscape=False, print_backg
         "--disable-gpu",
         "--no-pdf-header-footer",
         f"--print-to-pdf={abs_pdf}",
-        f"file:///{abs_html.replace(os.sep, '/')}"
+        Path(abs_html).as_uri()
     ]
 
     if print_background:

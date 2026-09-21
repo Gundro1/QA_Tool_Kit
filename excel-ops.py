@@ -22,6 +22,8 @@ def read_excel(file_path, sheet_name=0, rows=None, fmt="json", stats=False):
     if file_path.endswith('.csv'):
         df = pd.read_csv(file_path, dtype=str)
     else:
+        sheet_name = int(sheet_name) if str(sheet_name).isdigit() else sheet_name
+        _warn_other_sheets(file_path, sheet_name)
         df = pd.read_excel(file_path, sheet_name=sheet_name, dtype=str)
 
     df = df.fillna("")
@@ -112,7 +114,7 @@ def write_excel(input_json, output_file, sheet_name="Data"):
     wb.save(output_file)
     print(f"Successfully wrote {len(df)} rows to '{output_file}' (Sheet: {sheet_name})")
 
-def merge_excel(files, dedup_key=None, output_file="merged_output.xlsx"):
+def merge_excel(files, dedup_key=None, output_file="merged_output.xlsx", sheet_name=0):
     """Merge multiple Excel/CSV files and optionally deduplicate."""
     dfs = []
     for f in files:
@@ -122,7 +124,8 @@ def merge_excel(files, dedup_key=None, output_file="merged_output.xlsx"):
         if f.endswith('.csv'):
             df = pd.read_csv(f, dtype=str)
         else:
-            df = pd.read_excel(f, dtype=str)
+            _warn_other_sheets(f, sheet_name)
+            df = pd.read_excel(f, sheet_name=sheet_name, dtype=str)
         dfs.append(df.fillna(""))
 
     if not dfs:
@@ -148,31 +151,60 @@ def merge_excel(files, dedup_key=None, output_file="merged_output.xlsx"):
         combined.to_excel(output_file, index=False)
     print(f"Successfully merged {len(files)} files into '{output_file}' ({len(combined)} total rows)")
 
+def _warn_other_sheets(path, sheet_name):
+    """merge/read use one sheet; say so when a workbook has others (Solo, logs)."""
+    try:
+        names = pd.ExcelFile(path).sheet_names
+    except Exception:
+        return
+    if len(names) > 1:
+        used = names[sheet_name] if isinstance(sheet_name, int) and sheet_name < len(names) else sheet_name
+        print(f"Warning: '{path}' has {len(names)} sheets {names}; only '{used}' is used (see --sheet).",
+              file=sys.stderr)
+
+
+def _clean_frame(df, trim, title_case_cols):
+    df = df.fillna("")
+    if trim:
+        for c in df.columns:
+            df[c] = df[c].astype(str).str.strip()
+    if title_case_cols:
+        for c in [c.strip() for c in title_case_cols.split(",")]:
+            if c in df.columns:
+                df[c] = df[c].astype(str).str.title()
+    return df
+
+
 def clean_excel(file_path, trim=True, title_case_cols=None, remove_suffix_cols=None, output_file=None):
-    """Clean text fields in Excel file (strip whitespace, titlecase, remove brand suffix)."""
+    """Clean text fields in Excel file (strip whitespace, titlecase, remove brand suffix).
+    Every sheet is cleaned and written back, so a Solo or log sheet is never dropped."""
     if not os.path.exists(file_path):
         print(f"Error: File '{file_path}' not found.", file=sys.stderr)
         sys.exit(1)
 
-    df = pd.read_excel(file_path, dtype=str) if file_path.endswith(('.xlsx', '.xls')) else pd.read_csv(file_path, dtype=str)
-    df = df.fillna("")
-
-    if trim:
-        for c in df.columns:
-            df[c] = df[c].astype(str).str.strip()
-
-    if title_case_cols:
-        cols = [c.strip() for c in title_case_cols.split(",")]
-        for c in cols:
-            if c in df.columns:
-                df[c] = df[c].astype(str).str.title()
-
     out = output_file or file_path
-    if out.endswith('.csv'):
-        df.to_csv(out, index=False)
+    if file_path.endswith(('.xlsx', '.xls', '.xlsm')):
+        sheets = pd.read_excel(file_path, sheet_name=None, dtype=str)
+        cleaned = {name: _clean_frame(df, trim, title_case_cols) for name, df in sheets.items()}
+        if out.endswith('.csv'):
+            if len(cleaned) > 1:
+                print(f"Error: '{file_path}' has {len(cleaned)} sheets; write to .xlsx to keep them all.",
+                      file=sys.stderr)
+                sys.exit(1)
+            next(iter(cleaned.values())).to_csv(out, index=False)
+        else:
+            with pd.ExcelWriter(out) as writer:
+                for name, df in cleaned.items():
+                    df.to_excel(writer, sheet_name=name, index=False)
+        sheets_note = f" ({len(cleaned)} sheet(s): {', '.join(cleaned)})"
     else:
-        df.to_excel(out, index=False)
-    print(f"Successfully cleaned '{file_path}' → '{out}'")
+        df = _clean_frame(pd.read_csv(file_path, dtype=str), trim, title_case_cols)
+        if out.endswith('.csv'):
+            df.to_csv(out, index=False)
+        else:
+            df.to_excel(out, index=False)
+        sheets_note = ""
+    print(f"Successfully cleaned '{file_path}' → '{out}'{sheets_note}")
 
 def main():
     parser = argparse.ArgumentParser(description="Excel ETL Operations Engine (excel-ops.py)")
@@ -194,6 +226,7 @@ def main():
     merge_p.add_argument("files", nargs="+", help="Files to merge")
     merge_p.add_argument("--dedup-key", help="Comma-separated column names to deduplicate by")
     merge_p.add_argument("--output", default="merged_output.xlsx", help="Output file path")
+    merge_p.add_argument("--sheet", default=0, help="Sheet name or index to merge from each workbook (default: first)")
 
     clean_p = subparsers.add_parser("clean", help="Clean string columns in Excel")
     clean_p.add_argument("file", help="File to clean")
@@ -208,7 +241,8 @@ def main():
     elif args.command == "write":
         write_excel(args.input, args.output, args.sheet)
     elif args.command == "merge":
-        merge_excel(args.files, args.dedup_key, args.output)
+        sheet = int(args.sheet) if str(args.sheet).isdigit() else args.sheet
+        merge_excel(args.files, args.dedup_key, args.output, sheet)
     elif args.command == "clean":
         clean_excel(args.file, args.trim, args.title_case, output_file=args.output)
     else:
