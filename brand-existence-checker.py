@@ -1,3 +1,23 @@
+"""
+Universal QA Toolkit — Brand Existence & Misrepresentation Screener (brand-existence-checker.py)
+
+Keyword screening that decides which brands need a manual (web) check. It does NOT
+verify presence online: a brand with no flags is reported as "No Flags", not as
+verified. Rules are configurable per country with --rules (JSON), because the
+defaults were tuned on Swiss data (German B2B words).
+
+Rules (defaults in DEFAULT_RULES):
+  edit_instructions   supervisor notes left in the brand text
+  b2b_keywords        construction / engineering / consulting firms (whole words)
+  hotel_brands        hotel brands that must START the name ('ibis ...', not 'Optika Ibis')
+  hotel_words         generic accommodation words anywhere in the name
+  accommodation_words a category/subcategory containing one of these is already
+                      filed as accommodation -> no hotel flag
+  location suffix     franchise name = another brand in the file + one of its cities
+                      ('Hotel Kompas Bled' next to 'Hotel Kompas')
+"""
+import re
+
 import pandas as pd
 import openpyxl
 from openpyxl.styles import Font, PatternFill, Alignment, Border, Side
@@ -5,74 +25,113 @@ from openpyxl.utils import get_column_letter
 import os
 import sys
 import argparse
-import subprocess
 from datetime import datetime
 
-def run_brand_existence_audit(excel_path, country_code="CH", auditor="Azeez"):
-    if not os.path.exists(excel_path):
-        print(f"Error: File '{excel_path}' not found.")
-        sys.exit(1)
+import qa_common as qc
 
-    out_dir = os.path.join(os.path.dirname(excel_path), "QA_Verification_Output")
+DEFAULT_RULES = {
+    "edit_instructions": ["update the postal code", "add street number", "corrupted"],
+    "b2b_keywords": ["ingenieure", "architektur", "consulting", "holding", "bau", "berater",
+                     "contractor", "construction"],
+    "hotel_brands": ["ibis", "radisson"],
+    "hotel_words": ["hotel", "hotels"],
+    "accommodation_words": ["hotel", "accommodation", "hostel", "resort", "lodging", "travel"],
+}
+
+
+def load_rules(path=None):
+    rules = {k: list(v) for k, v in DEFAULT_RULES.items()}
+    if path:
+        custom = qc.load_json(path)
+        unknown = set(custom) - set(rules)
+        if unknown:
+            print(f"Error: Unknown rule keys in {path}: {sorted(unknown)}", file=sys.stderr)
+            sys.exit(1)
+        rules.update(custom)
+    return rules
+
+
+def _words_pattern(words):
+    return re.compile(r"\b(?:" + "|".join(re.escape(w) for w in words) + r")\b", re.IGNORECASE) if words else None
+
+
+def screen_brand(name, category_text, cities, rules, country_code, all_brands=None):
+    """Return (status, reason, action) for one brand."""
+    lower = name.lower()
+    if any(w in lower for w in rules["edit_instructions"]):
+        return ("Misrepresentation", "Corrupted brand string containing supervisor edit instruction.",
+                "REMOVE / MERGE — Clean and merge under canonical brand name.")
+    b2b = _words_pattern(rules["b2b_keywords"])
+    if b2b and b2b.search(name):
+        return ("Misrepresentation", "Industrial construction, B2B engineering, or architectural firm with no retail store chain.",
+                "REMOVE / RECLASSIFY — B2B entity, not a consumer retail franchise.")
+    hotel_brand = re.match(r"(?:" + "|".join(re.escape(b) for b in rules["hotel_brands"]) + r")\b", lower) \
+        if rules["hotel_brands"] else None
+    hotel_word = _words_pattern(rules["hotel_words"])
+    is_hotel = bool(hotel_brand) or bool(hotel_word and hotel_word.search(name))
+    filed_as_stay = any(w in category_text.lower() for w in rules["accommodation_words"])
+    if is_hotel and not filed_as_stay:
+        return ("Manual Review", "Hotel name filed outside an accommodation category.",
+                "ALIGN TAXONOMY — Confirm subcategory matches 'Hotels & Accommodations'.")
+    tokens = qc.norm_text(name)
+    for city in sorted({qc.norm_text(c) for c in cities if str(c).strip()}, key=len, reverse=True):
+        base = tokens[: -len(city)].strip()
+        # Only when the name without the city is ANOTHER brand in the file: many real
+        # companies carry a city in their name (Elektro Maribor, Lekarna Ljubljana).
+        if len(city) > 2 and tokens.endswith(" " + city) and base in (all_brands or ()):
+            return ("Manual Review", f"Brand name is '{base.title()}' plus its city ('{city.title()}'); "
+                    "the rows are split from that brand.",
+                    "STRIP LOCATION SUFFIX — Clean franchise_name to pure brand name.")
+    return ("No Flags", f"No screening rule matched. Presence in {country_code} was not checked online.",
+            "NONE — verify on the brand's official store locator if in doubt.")
+
+
+def run_brand_existence_audit(excel_path, country_code="CH", auditor=None, output_dir=None, rules=None,
+                              sheet=None, engine=None):
+    auditor = auditor or os.environ.get("QA_AUDITOR", "QA")
+    rules = rules or load_rules()
+    out_dir = os.path.abspath(output_dir or os.path.join(os.path.dirname(excel_path), "QA_Verification_Output"))
     os.makedirs(out_dir, exist_ok=True)
-    
+
     country_code = country_code.upper()
     base_name = os.path.splitext(os.path.basename(excel_path))[0]
     out_excel = os.path.join(out_dir, f"{country_code}_Brand_Existence_Verification_{auditor}.xlsx")
-    out_html = os.path.join(out_dir, f"{country_code}_Brand_Existence_Report_{auditor}.html")
-    out_pdf = os.path.join(out_dir, f"{country_code}_Brand_Existence_Report_{auditor}.pdf")
 
-    print(f"Loading dataset: {excel_path}")
-    df = pd.read_excel(excel_path)
+    with qc.timed("Load"):
+        df = qc.load_dataset(excel_path, sheet=sheet, engine=engine)
+    if "franchise_flag" in df.columns:
+        df = df[df["franchise_flag"].str.strip().str.lower().isin(qc.TRUE_TOKENS)]
     total_rows = len(df)
 
     fname_col = "franchise_name" if "franchise_name" in df.columns else ("business_name" if "business_name" in df.columns else df.columns[0])
     web_col = "website" if "website" in df.columns else "url"
     city_col = "city" if "city" in df.columns else "admin_level_1"
     cat_col = "category" if "category" in df.columns else df.columns[1]
+    sub_col = "subcategory" if "subcategory" in df.columns else None
 
-    brand_groups = df.groupby(fname_col)
+    df = df[df[fname_col].str.strip() != ""]
+    brand_groups = df.groupby(df[fname_col].str.strip())
+    all_brands = {qc.norm_text(b) for b in brand_groups.groups}
     verification_data = []
 
-    # Known misrepresentations & B2B contractors pattern
-    b2b_keywords = r'\b(ingenieure|architektur|consulting|holding|bau|berater|contractor|construction)\b'
-    
     for bname, group in brand_groups:
         count = len(group)
-        urls = [str(u) for u in group[web_col].dropna().unique() if str(u).strip() != ''] if web_col in group.columns else []
+        urls = [str(u) for u in group[web_col].unique() if str(u).strip() != ''] if web_col in group.columns else []
         main_url = urls[0] if urls else "N/A"
-        cities = list(group[city_col].dropna().unique()) if city_col in group.columns else []
+        cities = [c for c in group[city_col].unique() if str(c).strip()] if city_col in group.columns else []
         city_sample = ", ".join(str(c) for c in cities[:3])
         if len(cities) > 3:
             city_sample += f" (+{len(cities)-3} more)"
-            
+
         b_clean = str(bname).strip()
-        cat_val = str(group[cat_col].dropna().iloc[0]) if cat_col in group.columns and not group[cat_col].dropna().empty else "General"
-        
+        cats = [c for c in group[cat_col].unique() if str(c).strip()] if cat_col in group.columns else []
+        cat_val = str(cats[0]) if cats else "General"
+        category_text = " ".join(cats + ([str(v) for v in group[sub_col].unique()] if sub_col else []))
+
         tld_hint = f".{country_code.lower()}"
         has_local_domain = "Yes" if any(tld_hint in u.lower() for u in urls) else "No"
 
-        # Automated screening logic
-        if any(w in b_clean.lower() for w in ["update the postal code", "add street number", "corrupted"]):
-            status = "Misrepresentation"
-            reason = "Corrupted brand string containing supervisor edit instruction."
-            action = "REMOVE / MERGE — Clean and merge under canonical brand name."
-        elif pd.Series(b_clean).str.contains(b2b_keywords, case=False).iloc[0]:
-            status = "Misrepresentation"
-            reason = "Industrial construction, B2B engineering, or architectural firm with no retail store chain."
-            action = "REMOVE / RECLASSIFY — B2B entity, not a consumer retail franchise."
-        elif "hotel" in b_clean.lower() or "ibis" in b_clean.lower() or "radisson" in b_clean.lower():
-            status = "Manual Review"
-            reason = "Hotel chain property. Verify subcategory taxonomy alignment to 'Hotels & Accommodations'."
-            action = "ALIGN TAXONOMY — Confirm subcategory matches 'Hotels & Accommodations'."
-        elif "bank" in b_clean.lower() and len(b_clean.split()) > 3:
-            status = "Manual Review"
-            reason = "Brand name contains regional canton/city suffix. Clean location suffix."
-            action = "STRIP LOCATION SUFFIX — Clean franchise_name to pure brand name."
-        else:
-            status = "Verified Present"
-            reason = f"Active franchise brand verified operating in {country_code}."
-            action = "VERIFIED"
+        status, reason, action = screen_brand(b_clean, category_text, cities, rules, country_code, all_brands)
 
         verification_data.append({
             "brand_name": b_clean,
@@ -125,7 +184,7 @@ def run_brand_existence_audit(excel_path, country_code="CH", auditor="Azeez"):
         ws.cell(row=r_idx, column=8, value=row.action_required).font = font_body
 
         st_cell = ws.cell(row=r_idx, column=5)
-        if row.status == "Verified Present":
+        if row.status == "No Flags":
             st_cell.fill = fill_verified
         elif row.status == "Manual Review":
             st_cell.fill = fill_review
@@ -133,16 +192,30 @@ def run_brand_existence_audit(excel_path, country_code="CH", auditor="Azeez"):
             st_cell.fill = fill_misrep
 
     wb.save(out_excel)
-    print(f"Audit completed! Reports saved in: {out_dir}")
+    counts = vdf["status"].value_counts().to_dict()
+    print(f"Screened {len(vdf):,} brands: {counts}")
+    print("Note: 'No Flags' means no screening rule matched; brand presence was not verified online.")
+    print(f"Audit completed! Report saved to: {out_excel}")
+    return vdf
 
 def main():
-    parser = argparse.ArgumentParser(description="Brand Existence & Misrepresentation Verification Checker")
+    parser = argparse.ArgumentParser(description="Brand Existence & Misrepresentation Screening (keyword rules)")
     parser.add_argument("excel_path", help="Path to target Excel dataset")
     parser.add_argument("--country", default="CH", help="Country ISO code (default: CH)")
-    parser.add_argument("--auditor", default="Azeez", help="Auditor name (default: Azeez)")
+    parser.add_argument("--auditor", default=None,
+                        help="Name used in the report file name (default: $QA_AUDITOR, else 'QA')")
+    parser.add_argument("--output-dir", default=None,
+                        help="Report folder (default: QA_Verification_Output next to the input file)")
+    parser.add_argument("--rules", default=None, help="JSON file overriding the screening keyword lists")
+    parser.add_argument("--sheet", default=None, help="Only this sheet (default: every data sheet)")
+    parser.add_argument("--engine", default=None, help="Excel reader engine (default: calamine if installed)")
+    qc.add_logging_args(parser)
     args = parser.parse_args()
+    qc.setup_logging(args)
 
-    run_brand_existence_audit(args.excel_path, args.country, args.auditor)
+    run_brand_existence_audit(args.excel_path, args.country, args.auditor, output_dir=args.output_dir,
+                              rules=load_rules(args.rules), sheet=args.sheet, engine=args.engine)
+
 
 if __name__ == "__main__":
     main()

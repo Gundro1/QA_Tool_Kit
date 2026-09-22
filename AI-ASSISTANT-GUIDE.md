@@ -130,7 +130,7 @@ Create a file called `CLAUDE.md` in your project root:
 - Data validation: `python data-validator.py "data.xlsx" --dedup-key "name,address"`
 
 ## Reporting Standards
-- All audit reports authored by "Azeez".
+- Sign audit reports with the name of the person who ran the audit (not the toolkit author).
 - Use professional English. No AI-speak phrases.
 - Postal code descriptions in human-readable terms, not raw regex.
 ```

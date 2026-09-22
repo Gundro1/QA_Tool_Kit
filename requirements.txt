@@ -1,8 +1,12 @@
-docx2pdf
+# Windows-only: Office COM automation for docx_preview.py / xlsx_preview.py
+docx2pdf; sys_platform == "win32"
+pywin32; sys_platform == "win32"
 PyMuPDF
-pywin32
 openpyxl
 pandas
 requests
 beautifulsoup4
 lxml
+# Speed-ups for large datasets (both optional; the scripts fall back without them)
+python-calamine   # ~8x faster Excel loading (pandas engine="calamine")
+rapidfuzz         # C-speed fuzzy matching for fuzzy-dedup.py

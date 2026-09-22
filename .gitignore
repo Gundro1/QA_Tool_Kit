@@ -8,3 +8,5 @@ _temp_*
 __pycache__/
 *.pyc
 *_preview/
+.pytest_cache/
+QA_Verification_Output/
