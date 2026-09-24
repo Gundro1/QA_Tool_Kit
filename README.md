@@ -1,7 +1,7 @@
 # Universal QA & Data Engineering Tool Kit
 
 A universal, project-independent QA automation and data engineering toolkit for use with Claude Code, Antigravity, and any AI coding assistant.
-Built by Azeez — works for any project (BisViews, PrimBooks, or enterprise data pipeline audits).
+Built by Azeez — works for any project.
 
 ---
 
