@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "outDir": "./dist",
+    "rootDir": ".",
+    "baseUrl": ".",
+    "paths": {
+      "@core/*": ["core/*"],
+      "@fixtures/*": ["fixtures/*"],
+      "@specs/*": ["specs/*"]
+    }
+  },
+  "include": ["specs/**/*.ts", "fixtures/**/*.ts", "playwright.config.ts"],
+  "exclude": ["node_modules", "dist"]
+}

@@ -28,6 +28,12 @@
  *   --auth <user:pass>       HTTP basic auth
  *   --user-agent <string>    Custom user agent
  *   --timeout <ms>           Navigation timeout (default: 30000)
+ *   --routes <csv>           Smoke-sweep mode: visit each path (comma-separated)
+ *                            against --url as base, recording per-route HTTP
+ *                            status, title, console errors, and failed network
+ *                            requests. Writes a screenshot per route when
+ *                            --screenshot-dir is given.
+ *   --screenshot-dir <dir>   Directory for per-route screenshots (routes mode)
  */
 
 const { chromium } = require('playwright');
@@ -58,6 +64,8 @@ function parseArgs() {
     auth: null,
     userAgent: null,
     timeout: 30000,
+    routes: null,
+    screenshotDir: null,
   };
 
   for (let i = 0; i < args.length; i++) {
@@ -86,6 +94,8 @@ function parseArgs() {
       case '--auth': opts.auth = args[++i]; break;
       case '--user-agent': opts.userAgent = args[++i]; break;
       case '--timeout': opts.timeout = parseInt(args[++i]); break;
+      case '--routes': opts.routes = args[++i].split(',').map(s => s.trim()).filter(Boolean); break;
+      case '--screenshot-dir': opts.screenshotDir = args[++i]; break;
     }
   }
 
@@ -107,8 +117,78 @@ function parseArgs() {
   return opts;
 }
 
+// Smoke-sweep mode: visit each route against the base URL and record
+// per-route HTTP status, title, console errors, and failed network requests.
+async function runRoutes(opts) {
+  const base = opts.url.replace(/\/+$/, '');
+  const results = { base, timestamp: new Date().toISOString(), viewport: opts.viewport, routes: [] };
+
+  console.log(`\n🌐 Route Smoke Sweep`);
+  console.log(`━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━`);
+  console.log(`Base: ${base}   Viewport: ${opts.viewport.width}x${opts.viewport.height}`);
+  console.log(`Routes: ${opts.routes.length}\n`);
+
+  const browser = await chromium.launch({ headless: !opts.headed });
+  const context = await browser.newContext({
+    viewport: opts.viewport,
+    userAgent: opts.userAgent || undefined,
+  });
+  if (opts.screenshotDir) fs.mkdirSync(path.resolve(opts.screenshotDir), { recursive: true });
+
+  for (const route of opts.routes) {
+    const url = route.startsWith('http') ? route : base + (route.startsWith('/') ? route : '/' + route);
+    const rec = { route, url, status: null, title: null, consoleErrors: [], failedRequests: [], error: null };
+
+    const page = await context.newPage();
+    page.on('console', msg => { if (msg.type() === 'error') rec.consoleErrors.push(msg.text().substring(0, 300)); });
+    page.on('pageerror', err => rec.consoleErrors.push('[pageerror] ' + err.message.substring(0, 300)));
+    page.on('requestfailed', req => {
+      rec.failedRequests.push({ url: req.url().substring(0, 200), method: req.method(),
+        type: req.resourceType(), reason: req.failure()?.errorText || 'failed' });
+    });
+    page.on('response', resp => {
+      const s = resp.status();
+      if (s >= 400) rec.failedRequests.push({ url: resp.url().substring(0, 200),
+        method: resp.request().method(), type: resp.request().resourceType(), status: s });
+    });
+
+    try {
+      const response = await page.goto(url, { waitUntil: 'networkidle', timeout: opts.timeout });
+      rec.status = response?.status() ?? null;
+      rec.title = (await page.title()) || '';
+      if (opts.wait > 0) await page.waitForTimeout(Math.min(opts.wait, 2000));
+      if (opts.screenshotDir) {
+        const safe = (route === '/' ? 'home' : route.replace(/[^a-z0-9]+/gi, '_').replace(/^_|_$/g, '')) || 'root';
+        const shot = path.resolve(opts.screenshotDir, `${safe}.png`);
+        await page.screenshot({ path: shot, fullPage: true });
+        rec.screenshot = shot;
+      }
+    } catch (err) {
+      rec.error = err.message.split('\n')[0].substring(0, 200);
+    }
+
+    const flag = rec.error ? '❌' : (rec.status >= 400 ? '⚠️' : '✅');
+    console.log(`${flag} [${rec.status ?? 'ERR'}] ${route.padEnd(20)} "${(rec.title || rec.error || '').substring(0, 45)}"` +
+      `${rec.consoleErrors.length ? '  console:' + rec.consoleErrors.length : ''}` +
+      `${rec.failedRequests.length ? '  netfail:' + rec.failedRequests.length : ''}`);
+
+    results.routes.push(rec);
+    await page.close();
+  }
+
+  await browser.close();
+
+  if (opts.output) {
+    fs.writeFileSync(path.resolve(opts.output), JSON.stringify(results, null, 2));
+    console.log(`\n💾 Results saved: ${path.resolve(opts.output)}`);
+  }
+  console.log(`\n✅ Sweep done: ${results.routes.length} routes.`);
+  return results;
+}
+
 async function run() {
   const opts = parseArgs();
+  if (opts.routes) return runRoutes(opts);
   const results = {
     url: opts.url,
     timestamp: new Date().toISOString(),

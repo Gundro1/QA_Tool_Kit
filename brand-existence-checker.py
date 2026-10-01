@@ -17,7 +17,6 @@ Rules (defaults in DEFAULT_RULES):
                       ('Hotel Kompas Bled' next to 'Hotel Kompas')
 """
 import re
-
 import pandas as pd
 import openpyxl
 from openpyxl.styles import Font, PatternFill, Alignment, Border, Side
@@ -26,14 +25,15 @@ import os
 import sys
 import argparse
 from datetime import datetime
+from concurrent.futures import ThreadPoolExecutor
 
 import qa_common as qc
 
 DEFAULT_RULES = {
     "edit_instructions": ["update the postal code", "add street number", "corrupted"],
     "b2b_keywords": ["ingenieure", "architektur", "consulting", "holding", "bau", "berater",
-                     "contractor", "construction"],
-    "hotel_brands": ["ibis", "radisson"],
+                     "contractor", "construction", "holding group", "financial studies"],
+    "hotel_brands": ["ibis", "radisson", "hilton", "marriott", "novotel", "sofitel", "hyatt"],
     "hotel_words": ["hotel", "hotels"],
     "accommodation_words": ["hotel", "accommodation", "hostel", "resort", "lodging", "travel"],
 }
@@ -76,8 +76,6 @@ def screen_brand(name, category_text, cities, rules, country_code, all_brands=No
     tokens = qc.norm_text(name)
     for city in sorted({qc.norm_text(c) for c in cities if str(c).strip()}, key=len, reverse=True):
         base = tokens[: -len(city)].strip()
-        # Only when the name without the city is ANOTHER brand in the file: many real
-        # companies carry a city in their name (Elektro Maribor, Lekarna Ljubljana).
         if len(city) > 2 and tokens.endswith(" " + city) and base in (all_brands or ()):
             return ("Manual Review", f"Brand name is '{base.title()}' plus its city ('{city.title()}'); "
                     "the rows are split from that brand.",
@@ -104,8 +102,8 @@ def run_brand_existence_audit(excel_path, country_code="CH", auditor=None, outpu
     total_rows = len(df)
 
     fname_col = "franchise_name" if "franchise_name" in df.columns else ("business_name" if "business_name" in df.columns else df.columns[0])
-    web_col = "website" if "website" in df.columns else "url"
-    city_col = "city" if "city" in df.columns else "admin_level_1"
+    web_col = "website" if "website" in df.columns else ("url" if "url" in df.columns else df.columns[-1])
+    city_col = "city" if "city" in df.columns else ("admin_level_1" if "admin_level_1" in df.columns else df.columns[3])
     cat_col = "category" if "category" in df.columns else df.columns[1]
     sub_col = "subcategory" if "subcategory" in df.columns else None
 
@@ -128,25 +126,25 @@ def run_brand_existence_audit(excel_path, country_code="CH", auditor=None, outpu
         cat_val = str(cats[0]) if cats else "General"
         category_text = " ".join(cats + ([str(v) for v in group[sub_col].unique()] if sub_col else []))
 
-        tld_hint = f".{country_code.lower()}"
-        has_local_domain = "Yes" if any(tld_hint in u.lower() for u in urls) else "No"
-
         status, reason, action = screen_brand(b_clean, category_text, cities, rules, country_code, all_brands)
 
         verification_data.append({
             "brand_name": b_clean,
             "category": cat_val,
             "branch_count": count,
+            "url_status": "Recorded" if urls else "No Website Recorded",
             "status": status,
             "sample_website": main_url,
             "sample_cities": city_sample,
-            "domain_hint": has_local_domain,
             "reason": reason,
             "action_required": action
         })
 
     vdf = pd.DataFrame(verification_data)
-    vdf.sort_values(by=["status", "branch_count"], ascending=[True, False], inplace=True)
+    status_order = {"Misrepresentation": 0, "Manual Review": 1, "No Flags": 2}
+    vdf["sort_order"] = vdf["status"].map(status_order)
+    vdf.sort_values(by=["sort_order", "branch_count"], ascending=[True, False], inplace=True)
+    vdf.drop(columns=["sort_order"], inplace=True)
 
     print(f"Generating Excel report: {out_excel}")
     wb = openpyxl.Workbook()
@@ -164,10 +162,10 @@ def run_brand_existence_audit(excel_path, country_code="CH", auditor=None, outpu
     fill_review = PatternFill(start_color="FFEB9C", end_color="FFEB9C", fill_type="solid")
     fill_misrep = PatternFill(start_color="FFC7CE", end_color="FFC7CE", fill_type="solid")
 
-    ws.cell(row=1, column=1, value=f"{country_code} Franchise Brand Existence & Misrepresentation Audit").font = font_title
+    ws.cell(row=1, column=1, value=f"{country_code} Franchise Brand Existence Screening Audit").font = font_title
     ws.cell(row=2, column=1, value=f"Dataset: {base_name} | Auditor: {auditor} | Total Brands: {len(vdf)} | Total Rows: {total_rows:,}").font = font_sub
 
-    headers = ["Brand Name", "Category", "Branch Count", f"Domain Hint (.{country_code.lower()})", "Status", "Sample Website", "Evidence / Issue Reason", "Action Required"]
+    headers = ["Brand Name", "Category", "Branch Count", "URL Status", "Status", "Sample Website", "Sample Cities", "Evidence / Reason", "Action Required"]
     for col_num, h in enumerate(headers, 1):
         cell = ws.cell(row=4, column=col_num, value=h)
         cell.font = font_header
@@ -177,11 +175,12 @@ def run_brand_existence_audit(excel_path, country_code="CH", auditor=None, outpu
         ws.cell(row=r_idx, column=1, value=row.brand_name).font = font_body
         ws.cell(row=r_idx, column=2, value=row.category).font = font_body
         ws.cell(row=r_idx, column=3, value=row.branch_count).font = font_body
-        ws.cell(row=r_idx, column=4, value=row.domain_hint).font = font_body
+        ws.cell(row=r_idx, column=4, value=row.url_status).font = font_body
         ws.cell(row=r_idx, column=5, value=row.status).font = font_body
         ws.cell(row=r_idx, column=6, value=row.sample_website).font = font_body
-        ws.cell(row=r_idx, column=7, value=row.reason).font = font_body
-        ws.cell(row=r_idx, column=8, value=row.action_required).font = font_body
+        ws.cell(row=r_idx, column=7, value=row.sample_cities).font = font_body
+        ws.cell(row=r_idx, column=8, value=row.reason).font = font_body
+        ws.cell(row=r_idx, column=9, value=row.action_required).font = font_body
 
         st_cell = ws.cell(row=r_idx, column=5)
         if row.status == "No Flags":
@@ -197,6 +196,7 @@ def run_brand_existence_audit(excel_path, country_code="CH", auditor=None, outpu
     print("Note: 'No Flags' means no screening rule matched; brand presence was not verified online.")
     print(f"Audit completed! Report saved to: {out_excel}")
     return vdf
+
 
 def main():
     parser = argparse.ArgumentParser(description="Brand Existence & Misrepresentation Screening (keyword rules)")

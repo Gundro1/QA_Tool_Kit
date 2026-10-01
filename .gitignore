@@ -1,12 +1,34 @@
+# ── Node ──
 node_modules/
 package-lock.json
+
+# ── Python ──
+__pycache__/
+*.pyc
+*.pyo
+.mypy_cache/
+.pytest_cache/
+*.egg-info/
+dist/
+
+# ── Generated output (never commit) ──
 *.png
 *.pdf
 *.html
+reports/
+playwright-report/
+test-results/
 test-*
 _temp_*
-__pycache__/
-*.pyc
 *_preview/
-.pytest_cache/
 QA_Verification_Output/
+
+# ── Environment & secrets ──
+.env
+.env.*
+!.env.example
+storage-state.json
+
+# ── IDE ──
+.vscode/
+.idea/
