@@ -1,0 +1,376 @@
+{
+ "_doc": "Per-country brand-name rules for brand_family.py. country_tokens: country/demonym/native words that are not part of a brand (Credit Bank Iraq == Credit Bank of Iraq == Credit Bank). qualifier_words: corporate filler. stop_words: of/the/al. acronyms: genuine ALL-CAPS brand names (exempt from the ALL CAPS format finding). generic_words: words that name a kind of business, never a brand on their own (suppresses 'Bank' inside 'National Bank'). distinct_pairs: [a,b] names a reviewer confirmed are different brands. Add entries as reviews find them; an empty country block is valid.",
+ "_default": {
+  "qualifier_words": [
+   "ltd",
+   "limited",
+   "llc",
+   "inc",
+   "plc",
+   "corp",
+   "co",
+   "company",
+   "group",
+   "holding",
+   "holdings",
+   "international",
+   "intl",
+   "gmbh",
+   "ag",
+   "sa",
+   "sas",
+   "srl",
+   "spa",
+   "bv",
+   "nv",
+   "pvt",
+   "fze",
+   "fzco",
+   "branch",
+   "official",
+   "store",
+   "stores",
+   "shop",
+   "outlet"
+  ],
+  "stop_words": [
+   "of",
+   "the",
+   "and",
+   "de",
+   "del",
+   "la",
+   "el",
+   "al",
+   "du",
+   "des",
+   "van",
+   "von",
+   "di",
+   "da",
+   "do",
+   "dos",
+   "das",
+   "&"
+  ],
+  "acronyms": [
+   "KFC",
+   "IKEA",
+   "BMW",
+   "DHL",
+   "H&M",
+   "IBM",
+   "HSBC",
+   "BP",
+   "UPS",
+   "LG",
+   "MG",
+   "BYD",
+   "GNC",
+   "CVS",
+   "TCL",
+   "HP",
+   "ADNOC",
+   "STC",
+   "MTN",
+   "GMC",
+   "DKNY",
+   "NYX",
+   "AXA",
+   "OBI",
+   "OMV",
+   "MOL",
+   "TUI",
+   "IHG",
+   "CNG",
+   "ATM",
+   "SMS",
+   "UK"
+  ],
+  "generic_words": [
+   "bank",
+   "banks",
+   "hotel",
+   "hotels",
+   "pharmacy",
+   "restaurant",
+   "restaurants",
+   "cafe",
+   "market",
+   "supermarket",
+   "mall",
+   "clinic",
+   "hospital",
+   "school",
+   "university",
+   "insurance",
+   "telecom",
+   "mobile",
+   "motors",
+   "auto",
+   "cars",
+   "gas",
+   "station",
+   "fuel",
+   "national",
+   "international",
+   "first",
+   "new",
+   "royal",
+   "grand",
+   "city",
+   "central",
+   "united",
+   "general",
+   "gold",
+   "smart",
+   "digital",
+   "express",
+   "plus",
+   "airways",
+   "airlines",
+   "air",
+   "telecom",
+   "pharmacy",
+   "pharmacies",
+   "group",
+   "trading",
+   "centre",
+   "center"
+  ],
+  "distinct_pairs": []
+ },
+ "IQ": {
+  "country_tokens": [
+   "iraq",
+   "iraqi",
+   "iraqia",
+   "عراق",
+   "العراق",
+   "عراقي",
+   "iq"
+  ]
+ },
+ "AE": {
+  "country_tokens": [
+   "uae",
+   "emirates",
+   "emirati",
+   "ae"
+  ]
+ },
+ "SA": {
+  "country_tokens": [
+   "saudi",
+   "saudia",
+   "ksa",
+   "arabia",
+   "sa"
+  ]
+ },
+ "EG": {
+  "country_tokens": [
+   "egypt",
+   "egyptian",
+   "misr",
+   "eg"
+  ]
+ },
+ "DZ": {
+  "country_tokens": [
+   "algeria",
+   "algerie",
+   "algérie",
+   "algerian",
+   "dz"
+  ]
+ },
+ "PK": {
+  "country_tokens": [
+   "pakistan",
+   "pakistani",
+   "pk"
+  ]
+ },
+ "BD": {
+  "country_tokens": [
+   "bangladesh",
+   "bd"
+  ]
+ },
+ "AO": {
+  "country_tokens": [
+   "angola",
+   "angolan",
+   "ao"
+  ]
+ },
+ "IE": {
+  "country_tokens": [
+   "ireland",
+   "irish",
+   "eire",
+   "ie"
+  ]
+ },
+ "PT": {
+  "country_tokens": [
+   "portugal",
+   "portuguesa",
+   "portugues",
+   "pt"
+  ]
+ },
+ "IT": {
+  "country_tokens": [
+   "italy",
+   "italia",
+   "italiana",
+   "italiano",
+   "it"
+  ]
+ },
+ "FR": {
+  "country_tokens": [
+   "france",
+   "francaise",
+   "française",
+   "fr"
+  ]
+ },
+ "AT": {
+  "country_tokens": [
+   "austria",
+   "osterreich",
+   "österreich",
+   "at"
+  ]
+ },
+ "BR": {
+  "country_tokens": [
+   "brazil",
+   "brasil",
+   "brasileira",
+   "br"
+  ]
+ },
+ "CO": {
+  "country_tokens": [
+   "colombia",
+   "colombiana",
+   "co"
+  ]
+ },
+ "CL": {
+  "country_tokens": [
+   "chile",
+   "chilena",
+   "cl"
+  ]
+ },
+ "AR": {
+  "country_tokens": [
+   "argentina",
+   "argentine",
+   "ar"
+  ]
+ },
+ "PE": {
+  "country_tokens": [
+   "peru",
+   "perú",
+   "peruana",
+   "pe"
+  ]
+ },
+ "DO": {
+  "country_tokens": [
+   "dominicana",
+   "dominican republic",
+   "republica dominicana",
+   "rd",
+   "do"
+  ]
+ },
+ "ZA": {
+  "country_tokens": [
+   "south africa",
+   "sa",
+   "za"
+  ]
+ },
+ "VN": {
+  "country_tokens": [
+   "vietnam",
+   "viet nam",
+   "vn"
+  ]
+ },
+ "PG": {
+  "country_tokens": [
+   "png",
+   "papua new guinea",
+   "papua",
+   "pg"
+  ]
+ },
+ "SI": {
+  "country_tokens": [
+   "slovenia",
+   "slovenija",
+   "si"
+  ]
+ },
+ "SK": {
+  "country_tokens": [
+   "slovakia",
+   "slovensko",
+   "sk"
+  ]
+ },
+ "CZ": {
+  "country_tokens": [
+   "czech",
+   "cesko",
+   "česko",
+   "cz"
+  ]
+ },
+ "CH": {
+  "country_tokens": [
+   "switzerland",
+   "schweiz",
+   "suisse",
+   "swiss",
+   "ch"
+  ]
+ },
+ "LU": {
+  "country_tokens": [
+   "luxembourg",
+   "lu"
+  ]
+ },
+ "BE": {
+  "country_tokens": [
+   "belgium",
+   "belgique",
+   "belgie",
+   "be"
+  ]
+ },
+ "HR": {
+  "country_tokens": [
+   "croatia",
+   "hrvatska",
+   "hr"
+  ]
+ },
+ "FI": {
+  "country_tokens": [
+   "finland",
+   "suomi",
+   "fi"
+  ]
+ }
+}
