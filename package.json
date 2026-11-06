@@ -21,7 +21,10 @@
     "diff": "node visual-diff.js",
     "fetch": "node url-fetch.js",
     "scrape": "node web-scraper.js",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "audit": "node app-auditor.js",
+    "fuzz": "node form-fuzzer.js",
+    "scan": "node security-vitals.js"
   },
   "dependencies": {
     "playwright": "^1.52.0",

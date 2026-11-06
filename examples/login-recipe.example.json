@@ -1,0 +1,10 @@
+{
+  "loginUrl": "https://app.example.com/login",
+  "fields": {
+    "#login-email": "$QA_USER",
+    "#login-password": "$QA_PASS"
+  },
+  "submit": "Login",
+  "successUrlNot": "/login",
+  "dismiss": ["Skip Tour"]
+}
