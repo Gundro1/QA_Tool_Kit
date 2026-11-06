@@ -62,6 +62,17 @@ jobs:
           QA_BASE_URL: https://httpbin.org
         continue-on-error: true  # Don't block CI on external site flakiness
 
+      - name: Authenticated-QA tools load & run (no secrets)
+        run: |
+          node --check core/session.js
+          node --check app-auditor.js
+          node --check form-fuzzer.js
+          node --check security-vitals.js
+          # exercise security-vitals against a public site (no login needed)
+          node security-vitals.js --url https://example.com --output sv-ci.json
+          node -e "const r=require('./sv-ci.json');if(!r.hosts||!Object.keys(r.hosts).length)process.exit(1);console.log('security-vitals OK')"
+        continue-on-error: true  # external-site flakiness shouldn't block CI
+
       - name: Upload test results
         if: always()
         uses: actions/upload-artifact@v4

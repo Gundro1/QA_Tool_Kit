@@ -32,3 +32,10 @@ storage-state.json
 # ── IDE ──
 .vscode/
 .idea/
+
+# Authenticated App QA — runtime artifacts (never commit sessions/credentials/outputs)
+qa-session*.json
+*.audit.json
+audit-screens/
+examples/*.local.json
+.env
